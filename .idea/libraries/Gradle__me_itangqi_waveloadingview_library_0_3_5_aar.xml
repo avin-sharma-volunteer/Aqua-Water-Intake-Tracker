@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: me.itangqi.waveloadingview:library:0.3.5@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f680db44a6500ee6e742001e93e1e67b/jetified-library-0.3.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f680db44a6500ee6e742001e93e1e67b/jetified-library-0.3.5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f680db44a6500ee6e742001e93e1e67b/jetified-library-0.3.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a2db1c561e74cd8c9a78b248ef7dddb3/jetified-library-0.3.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a2db1c561e74cd8c9a78b248ef7dddb3/jetified-library-0.3.5/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a2db1c561e74cd8c9a78b248ef7dddb3/jetified-library-0.3.5/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.itangqi.waveloadingview/library/0.3.5/54a283dd89525783227c9daba03af61d63e946ae/library-0.3.5-javadoc.jar!/" />
