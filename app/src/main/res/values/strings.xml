@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Water Reminder</string>
+
+
+
+
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+
+    <string name="google_baner">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="g_inr">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="g_native">ca-app-pub-3940256099942544/2247696110</string>
+
+
+
+    <string name="pref_notification_message_value">Hey… Lets drink some water…</string>
+    <string name="add_info_text">Please provide some information to customize the experience for you…!!</string>
+    <string name="str_continue">Continue</string>
+    <string name="weight_hint">Enter your weight</string>
+    <string name="enter_name">Enter your Name</string>
+    <string name="save">Save</string>
+    <string name="custom_intake_hint">Enter your custom intake target in ml</string>
+    <string name="workout_hint">Set daily work out time in min/day</string>
+    <string name="wakeup_hint">Set wake up time</string>
+    <string name="sleeping_hint">Set Sleep time</string>
+    <string name="edit_info_text">Edit Your Info</string>
+    <string name="update">Update User info</string>
+    <string name="notif_setting_header">Notification Settings</string>
+    <string name="notif_messsage_hint">Notification Message</string>
+</resources>
