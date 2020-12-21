@@ -156,7 +156,7 @@ class UserInfo : AppCompatActivity() {
             imm.hideSoftInputFromWindow(init_user_info_parent_layout.windowToken, 0)
 
             weight = etWeight.editText!!.text.toString()
-            name = etWeight.editText!!.text.toString()
+            name = etName.editText!!.text.toString()
             workTime = etWorkTime.editText!!.text.toString()
 
             // Do empty checks

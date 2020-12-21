@@ -81,7 +81,7 @@
                         android:textStyle="bold" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/name"
+                        android:id="@+id/etName"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_below="@+id/t1"
