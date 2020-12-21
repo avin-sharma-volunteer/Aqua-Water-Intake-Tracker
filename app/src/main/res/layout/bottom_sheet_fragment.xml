@@ -45,15 +45,7 @@
             android:layout_marginRight="20dp"
             android:orientation="horizontal"
             app:cardCornerRadius="20dp"
-            app:cardElevation="20dip">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:background="@mipmap/banner2" />
-
-
-        </androidx.cardview.widget.CardView>
+            app:cardElevation="20dip"/>
 
 
         <TextView

@@ -5,19 +5,11 @@
     android:layout_height="match_parent"
     android:background="@color/grey">
 
-
-    <RelativeLayout
-        android:id="@+id/mainbanner"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@mipmap/main_banner" />
-
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/relstart"
-        android:layout_below="@+id/mainbanner"
         android:scrollbars="none">
 
         <RelativeLayout
