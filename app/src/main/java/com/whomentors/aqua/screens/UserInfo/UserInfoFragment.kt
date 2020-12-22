@@ -13,7 +13,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
@@ -23,7 +26,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.whomentors.aqua.Activity.Start
 import com.whomentors.aqua.AppUtils.Thisapp
 import com.whomentors.aqua.R
-import kotlinx.android.synthetic.main.activity_init_user_info.*
+import kotlinx.android.synthetic.main.fragment_user_info.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.util.*
@@ -52,7 +55,16 @@ class UserInfoFragment : Fragment() {
         val layoutView = inflater.inflate(R.layout.fragment_user_info, container, false)
         val context = layoutView.context
 
+        if (!context.getSharedPreferences("user_pref", 0).getBoolean("firstrun", true)) {
+            findNavController().navigate(R.id.action_userInfoFragment_to_waterIntakeFragment)
+        }
+
         val etWakeUpTime: TextInputLayout = layoutView.findViewById(R.id.etWakeUpTime)
+        val etSleepTime: TextInputLayout = layoutView.findViewById(R.id.etSleepTime);
+        val btnContinue: Button = layoutView.findViewById(R.id.btnContinue)
+        val etWeight: TextInputLayout = layoutView.findViewById(R.id.etWeight)
+        val etName: TextInputLayout = layoutView.findViewById(R.id.etName)
+        val etWorkTime: TextInputLayout = layoutView.findViewById(R.id.etWorkTime)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
@@ -221,8 +233,8 @@ class UserInfoFragment : Fragment() {
                     editor.putInt(Thisapp.TOTAL_INTAKE, df.format(totalIntake).toInt())
 
                     editor.apply()
-                    startActivity(Intent(this, Start::class.java))
-                    finish()
+
+                    it.findNavController().navigate(R.id.action_userInfoFragment_to_waterIntakeFragment)
 
                 }
             }

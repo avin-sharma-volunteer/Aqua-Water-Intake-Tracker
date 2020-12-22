@@ -12,6 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.google.android.gms.ads.AdListener
@@ -93,17 +95,16 @@ class WaterIntakeFragment : Fragment() {
         }
 
         // Goes back to Start Activity
-        btnBack.setOnClickListener {
-            startActivity(Intent(this, Start::class.java))
-            finish()
-        }
+//        btnBack.setOnClickListener {
+//            startActivity(Intent(this, Start::class.java))
+//            finish()
+//        }
 
         totalIntake = sharedPref.getInt(Thisapp.TOTAL_INTAKE, 0)
 
         // Why should we go back to UserInfo if the intake is 0 and how would intake go below 0?
         if (totalIntake <= 0) {
-            startActivity(Intent(this, UserInfo::class.java))
-            finish()
+            findNavController().navigate(R.id.action_waterIntakeFragment_to_userInfoFragment)
         }
 
         dateNow = Thisapp.getCurrentDate()!!
@@ -129,22 +130,24 @@ class WaterIntakeFragment : Fragment() {
             true
         )
 
+        val context = requireContext()
+
         // Get notification status from shared preferences
         notificStatus = sharedPref.getBoolean(Thisapp.NOTIFICATION_STATUS_KEY, true)
         val alarm = Alarm()
         if (!context?.let { alarm.checkAlarm(it) }!! && notificStatus) {
-            btnNotific.setImageDrawable(context!!.getDrawable(R.drawable.ic_bell))
+            btnNotific.setImageDrawable(requireContext().getDrawable(R.drawable.ic_bell))
             alarm.setAlarm(
-                context!!,
+                requireContext(),
                 sharedPref.getInt(Thisapp.NOTIFICATION_FREQUENCY_KEY, 30).toLong()
             )
         }
 
         // Change notification icon based on notification status
         if (notificStatus) {
-            btnNotific.setImageDrawable(context!!.getDrawable(R.drawable.ic_bell))
+            btnNotific.setImageDrawable(requireContext().getDrawable(R.drawable.ic_bell))
         } else {
-            btnNotific.setImageDrawable(context!!.getDrawable(R.drawable.ic_bell_disabled))
+            btnNotific.setImageDrawable(requireContext().getDrawable(R.drawable.ic_bell_disabled))
         }
 
         sqliteHelper.addAll(dateNow, 0, totalIntake)
@@ -172,12 +175,12 @@ class WaterIntakeFragment : Fragment() {
                 }
                 selectedOption = null
                 t6.text = "Custom"
-                op50ml.background = context!!.getDrawable(outValue.resourceId)
-                op100ml.background = context!!.getDrawable(outValue.resourceId)
-                op150ml.background = context!!.getDrawable(outValue.resourceId)
-                op200ml.background = context!!.getDrawable(outValue.resourceId)
-                op250ml.background = context!!.getDrawable(outValue.resourceId)
-                opCustom.background = context!!.getDrawable(outValue.resourceId)
+                op50ml.background = context.getDrawable(outValue.resourceId)
+                op100ml.background = context.getDrawable(outValue.resourceId)
+                op150ml.background = context.getDrawable(outValue.resourceId)
+                op200ml.background = context.getDrawable(outValue.resourceId)
+                op250ml.background = context.getDrawable(outValue.resourceId)
+                opCustom.background = context.getDrawable(outValue.resourceId)
             } else {
                 YoYo.with(Techniques.Shake)
                     .duration(700)

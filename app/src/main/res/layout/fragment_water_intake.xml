@@ -1,14 +1,434 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorSecondaryLighter"
     tools:context=".screens.WaterIntake.WaterIntakeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <RelativeLayout
+        android:id="@+id/main_rel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <RelativeLayout
+            android:id="@+id/rela1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorDark"
+            tools:ignore="MissingConstraints">
+
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@mipmap/left" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/kanit"
+                android:gravity="center"
+                android:text="Daily Drink Target"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+
+            <ImageView
+                android:id="@+id/btnNotific"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:src="@drawable/ic_bell"
+                app:fabSize="normal" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/fb_process"
+            android:layout_below="@+id/rela1"
+            android:layout_marginTop="33dp">
+
+
+            <com.github.rongi.rotate_layout.layout.RotateLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="33dp"
+                android:layout_marginBottom="6dp"
+                app:angle="90">
+
+                <params.com.stepprogressview.StepProgressView
+                    android:id="@+id/intakeProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="5dp"
+                    app:currentProgress="15"
+                    app:markerColor="@color/colorSkyBlue"
+                    app:markers="100"
+                    app:progressBackgroundColor="#00000000"
+                    app:progressBarHeight="140dp"
+                    app:progressColor="#2196F3"
+                    app:textColor="@color/colorWhite"
+                    app:textMargin="5dp"
+                    app:textSize="15sp"
+                    app:totalProgress="100" />
+            </com.github.rongi.rotate_layout.layout.RotateLayout>
+
+            <RelativeLayout
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/water_bottel11" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/fb_process"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/cardviewone"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp"
+                android:layout_toLeftOf="@+id/fabAdd"
+                android:gravity="start">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <TextView
+                        android:id="@+id/tvIntook"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gothic"
+                        android:text="1000"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/of"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_toRightOf="@id/tvIntook"
+                        android:text="of"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tvTotalIntake"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_toRightOf="@id/of"
+                        android:fontFamily="@font/gothic"
+                        android:text="1000 ml"
+                        android:textColor="@color/black"
+                        android:textSize="25sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+            <ImageView
+                android:id="@+id/fabAdd"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/a3_grad"
+                android:clickable="true"
+                android:padding="10dp"
+                android:src="@drawable/ic_plus_solid" />
+        </RelativeLayout>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardviewone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/adView"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="20dip">
+
+            <HorizontalScrollView
+                android:id="@+id/h_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp">
+
+
+                <LinearLayout
+                    android:id="@+id/carddd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="6">
+
+                    <RelativeLayout
+                        android:id="@+id/op50ml"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/i1"
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/a2_grad"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_water_glass" />
+
+                        <TextView
+                            android:id="@+id/t1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/i1"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="50 ml"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/t1"
+                            android:fontFamily="@font/gothic"
+                            android:text="Water"
+                            android:textAlignment="center" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/op100ml"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/i2"
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/a2_grad"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_tea" />
+
+                        <TextView
+                            android:id="@+id/t2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/i2"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="100 ml"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/t2"
+                            android:fontFamily="@font/gothic"
+                            android:text="Tea"
+                            android:textAlignment="center" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/op150ml"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/i3"
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/a2_grad"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_coffee_cup" />
+
+                        <TextView
+                            android:id="@+id/t3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/i3"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="150 ml"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/t3"
+                            android:fontFamily="@font/gothic"
+                            android:text="Cofee"
+                            android:textAlignment="center" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/op200ml"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/i4"
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/a2_grad"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_cola" />
+
+                        <TextView
+                            android:id="@+id/t4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/i4"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="200 ml"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/t4"
+                            android:fontFamily="@font/gothic"
+                            android:text="Soft Drink"
+                            android:textAlignment="center" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/op250ml"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/i5"
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/a2_grad"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_juice" />
+
+                        <TextView
+                            android:id="@+id/t5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/i5"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="250 ml"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/t5"
+                            android:fontFamily="@font/gothic"
+                            android:text="Juice"
+                            android:textAlignment="center" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/opCustom"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/i6"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/a3_grad"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_plus_solid" />
+
+                        <TextView
+                            android:id="@+id/t6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/i6"
+                            android:fontFamily="@font/baloo"
+                            android:gravity="center"
+                            android:text="Custom"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBlack" />
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+            </HorizontalScrollView>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/google_baner" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
