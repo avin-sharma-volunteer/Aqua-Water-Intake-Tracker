@@ -55,6 +55,11 @@ class WaterIntakeFragment : Fragment() {
         val layoutView = inflater.inflate(R.layout.fragment_water_intake, container, false)
         val context = layoutView.context
 
+//        if (context.getSharedPreferences("user_pref", 0)?.getBoolean("firstrun", true) == true) {
+//            findNavController().navigate(R.id.action_waterIntakeFragment_to_userInfoFragment)
+//            Log.d("WaterIntakeFragment", "nav waterIntake to userInfo")
+//        }
+
         sharedPref = context.getSharedPreferences(Thisapp.USERS_SHARED_PREF, Thisapp.PRIVATE_MODE)
         sqliteHelper = Sqlite(context)
 

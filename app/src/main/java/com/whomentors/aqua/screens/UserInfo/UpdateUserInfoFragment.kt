@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.navigation.findNavController
+import com.google.android.material.textfield.TextInputLayout
 import com.whomentors.aqua.AppUtils.Thisapp
 import com.whomentors.aqua.Helpers.Alarm
 import com.whomentors.aqua.Helpers.Sqlite
@@ -42,6 +44,14 @@ class UpdateUserInfoFragment : Fragment() {
         // Inflate the layout for this fragment
         val layoutView = inflater.inflate(R.layout.fragment_update_user_info, container, false)
         val context = layoutView.context
+
+        val etWakeUpTime: TextInputLayout = layoutView.findViewById(R.id.etWakeUpTime)
+        val etSleepTime: TextInputLayout = layoutView.findViewById(R.id.etSleepTime);
+        val etWeight: TextInputLayout = layoutView.findViewById(R.id.etWeight)
+        val etWorkTime: TextInputLayout = layoutView.findViewById(R.id.etWorkTime)
+        val etTarget: TextInputLayout = layoutView.findViewById(R.id.etTarget);
+        val etNotificationText: TextInputLayout = layoutView.findViewById(R.id.etNotificationText)
+        val btnUpdate: Button = layoutView.findViewById(R.id.btnUpdate)
 
         sharedPref = context.getSharedPreferences(Thisapp.USERS_SHARED_PREF, Thisapp.PRIVATE_MODE)
 

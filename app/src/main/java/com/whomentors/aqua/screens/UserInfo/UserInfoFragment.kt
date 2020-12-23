@@ -55,9 +55,6 @@ class UserInfoFragment : Fragment() {
         val layoutView = inflater.inflate(R.layout.fragment_user_info, container, false)
         val context = layoutView.context
 
-        if (!context.getSharedPreferences("user_pref", 0).getBoolean("firstrun", true)) {
-            findNavController().navigate(R.id.action_userInfoFragment_to_waterIntakeFragment)
-        }
 
         val etWakeUpTime: TextInputLayout = layoutView.findViewById(R.id.etWakeUpTime)
         val etSleepTime: TextInputLayout = layoutView.findViewById(R.id.etSleepTime);

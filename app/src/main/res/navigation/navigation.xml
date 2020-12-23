@@ -6,17 +6,6 @@
     app:startDestination="@id/waterIntakeFragment">
 
     <fragment
-        android:id="@+id/waterIntakeFragment"
-        android:name="com.whomentors.aqua.screens.WaterIntake.WaterIntakeFragment"
-        android:label="fragment_water_intake"
-        tools:layout="@layout/fragment_water_intake" >
-        <action
-            android:id="@+id/action_waterIntakeFragment_to_userInfoFragment"
-            app:destination="@id/userInfoFragment"
-            app:popUpTo="@id/waterIntakeFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
         android:id="@+id/userInfoFragment"
         android:name="com.whomentors.aqua.screens.UserInfo.UserInfoFragment"
         android:label="fragment_user_info"
@@ -27,6 +16,19 @@
             app:popUpTo="@id/userInfoFragment"
             app:popUpToInclusive="true" />
     </fragment>
+
+    <fragment
+        android:id="@+id/waterIntakeFragment"
+        android:name="com.whomentors.aqua.screens.WaterIntake.WaterIntakeFragment"
+        android:label="fragment_water_intake"
+        tools:layout="@layout/fragment_water_intake" >
+        <action
+            android:id="@+id/action_waterIntakeFragment_to_userInfoFragment"
+            app:destination="@id/userInfoFragment"
+            app:popUpTo="@id/waterIntakeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
     <fragment
         android:id="@+id/updateUserInfoFragment"
         android:name="com.whomentors.aqua.screens.UserInfo.UpdateUserInfoFragment"
@@ -34,6 +36,13 @@
         tools:layout="@layout/fragment_update_user_info" >
         <action
             android:id="@+id/action_updateUserInfoFragment_to_waterIntakeFragment"
-            app:destination="@id/waterIntakeFragment" />
+            app:destination="@id/waterIntakeFragment"
+            app:popUpTo="@id/navigation"
+            app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/statsFragment"
+        android:name="com.whomentors.aqua.screens.Stats.StatsFragment"
+        android:label="fragment_stats"
+        tools:layout="@layout/fragment_stats" />
 </navigation>
