@@ -6,10 +6,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.util.TypedValue
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.navigation.findNavController
@@ -27,6 +25,7 @@ import com.whomentors.aqua.Activity.UserInfo
 import com.whomentors.aqua.AppUtils.Thisapp
 import com.whomentors.aqua.Helpers.Alarm
 import com.whomentors.aqua.Helpers.Sqlite
+import com.whomentors.aqua.MainActivity
 import com.whomentors.aqua.R
 import kotlinx.android.synthetic.main.water_activity_main.*
 
@@ -55,10 +54,6 @@ class WaterIntakeFragment : Fragment() {
         val layoutView = inflater.inflate(R.layout.fragment_water_intake, container, false)
         val context = layoutView.context
 
-//        if (context.getSharedPreferences("user_pref", 0)?.getBoolean("firstrun", true) == true) {
-//            findNavController().navigate(R.id.action_waterIntakeFragment_to_userInfoFragment)
-//            Log.d("WaterIntakeFragment", "nav waterIntake to userInfo")
-//        }
 
         sharedPref = context.getSharedPreferences(Thisapp.USERS_SHARED_PREF, Thisapp.PRIVATE_MODE)
         sqliteHelper = Sqlite(context)
@@ -114,7 +109,56 @@ class WaterIntakeFragment : Fragment() {
 
         dateNow = Thisapp.getCurrentDate()!!
 
+        setHasOptionsMenu(true)
         return layoutView
+    }
+
+    /**
+     * Create options menu, bell icon in our case.
+     */
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu, menu)
+
+        // Check notification status
+        notificStatus = sharedPref.getBoolean(Thisapp.NOTIFICATION_STATUS_KEY, true)
+
+        // Change notification icon based on notification status
+        if (notificStatus) {
+            menu.getItem(0).setIcon(R.drawable.ic_bell)
+        } else {
+            menu.getItem(0).setIcon(R.drawable.ic_bell_disabled)
+        }
+
+    }
+
+    /**
+     * Handle item clicks. We handle clicks on bell icon here.
+     */
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_notification) {
+            notificStatus = !notificStatus
+            sharedPref.edit().putBoolean(Thisapp.NOTIFICATION_STATUS_KEY, notificStatus).apply()
+
+            val alarm = Alarm()
+            if (notificStatus) {
+                item.setIcon(R.drawable.ic_bell)
+                Snackbar.make((activity as MainActivity).findViewById(R.id.action_notification), "Notification Enabled..", Snackbar.LENGTH_SHORT).show()
+                context?.let {
+                    alarm.setAlarm(
+                        it,
+                        sharedPref.getInt(Thisapp.NOTIFICATION_FREQUENCY_KEY, 30).toLong()
+                    )
+                }
+            } else {
+                item.setIcon(R.drawable.ic_bell_disabled)
+                Snackbar.make((activity as MainActivity).findViewById(R.id.action_notification), "Notification Disabled..", Snackbar.LENGTH_SHORT).show()
+                context?.let { alarm.cancelAlarm(it) }
+            }
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     fun updateValues() {
@@ -141,19 +185,12 @@ class WaterIntakeFragment : Fragment() {
         notificStatus = sharedPref.getBoolean(Thisapp.NOTIFICATION_STATUS_KEY, true)
         val alarm = Alarm()
         if (!context?.let { alarm.checkAlarm(it) }!! && notificStatus) {
-            btnNotific.setImageDrawable(requireContext().getDrawable(R.drawable.ic_bell))
             alarm.setAlarm(
                 requireContext(),
                 sharedPref.getInt(Thisapp.NOTIFICATION_FREQUENCY_KEY, 30).toLong()
             )
         }
 
-        // Change notification icon based on notification status
-        if (notificStatus) {
-            btnNotific.setImageDrawable(requireContext().getDrawable(R.drawable.ic_bell))
-        } else {
-            btnNotific.setImageDrawable(requireContext().getDrawable(R.drawable.ic_bell_disabled))
-        }
 
         sqliteHelper.addAll(dateNow, 0, totalIntake)
 
@@ -194,22 +231,6 @@ class WaterIntakeFragment : Fragment() {
             }
         }
 
-        btnNotific.setOnClickListener {
-            notificStatus = !notificStatus
-            sharedPref.edit().putBoolean(Thisapp.NOTIFICATION_STATUS_KEY, notificStatus).apply()
-            if (notificStatus) {
-                btnNotific.setImageDrawable(context!!.getDrawable(R.drawable.ic_bell))
-                Snackbar.make(it, "Notification Enabled..", Snackbar.LENGTH_SHORT).show()
-                alarm.setAlarm(
-                    context!!,
-                    sharedPref.getInt(Thisapp.NOTIFICATION_FREQUENCY_KEY, 30).toLong()
-                )
-            } else {
-                btnNotific.setImageDrawable(context!!.getDrawable(R.drawable.ic_bell_disabled))
-                Snackbar.make(it, "Notification Disabled..", Snackbar.LENGTH_SHORT).show()
-                alarm.cancelAlarm(context!!)
-            }
-        }
 
 
 
