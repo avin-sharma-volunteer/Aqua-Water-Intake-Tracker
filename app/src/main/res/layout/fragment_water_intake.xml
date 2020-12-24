@@ -17,49 +17,6 @@
         tools:ignore="MissingConstraints">
 
         <RelativeLayout
-            android:id="@+id/rela1"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorDark"
-            tools:ignore="MissingConstraints">
-
-
-            <ImageView
-                android:id="@+id/btnBack"
-                android:layout_width="35dp"
-                android:layout_height="40dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:background="@mipmap/left" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_centerInParent="true"
-                android:fontFamily="@font/kanit"
-                android:gravity="center"
-                android:text="Daily Drink Target"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-
-
-            <ImageView
-                android:id="@+id/btnNotific"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:padding="10dp"
-                android:src="@drawable/ic_bell"
-                app:fabSize="normal" />
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/fb_process"

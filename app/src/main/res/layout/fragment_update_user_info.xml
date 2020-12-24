@@ -15,25 +15,6 @@
         android:layout_height="match_parent"
         tools:ignore="MissingConstraints">
 
-        <RelativeLayout
-            android:id="@+id/r2r2"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorDark">
-
-            <TextView
-                android:id="@+id/tview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="20dp"
-                android:fontFamily="@font/kanit"
-                android:text="@string/update"
-                android:textAlignment="textStart"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
-        </RelativeLayout>
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardviewone"
