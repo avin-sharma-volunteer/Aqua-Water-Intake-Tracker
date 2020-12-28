@@ -3,12 +3,6 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-        <variable
-            name="mainWaterVM"
-            type="com.whomentors.aqua.screens.waterIntake.WaterIntakeFragment" />
-    </data>
-
     <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/main_activity_parent"
         android:layout_width="match_parent"

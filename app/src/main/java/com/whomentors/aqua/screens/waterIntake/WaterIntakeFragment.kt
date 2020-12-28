@@ -24,7 +24,6 @@ import com.whomentors.aqua.Helpers.Sqlite
 import com.whomentors.aqua.MainActivity
 import com.whomentors.aqua.R
 import com.whomentors.aqua.databinding.FragmentWaterIntakeBinding
-import kotlinx.android.synthetic.main.water_activity_main.*
 
 
 /**
@@ -43,22 +42,22 @@ class WaterIntakeFragment : Fragment() {
     private var selectedOption: Int? = null
     private var snackbar: Snackbar? = null
 
+    private lateinit var binding: FragmentWaterIntakeBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentWaterIntakeBinding>(inflater, R.layout.fragment_water_intake, container, false)
-        binding.mainWaterVM = this
+        binding = DataBindingUtil.inflate<FragmentWaterIntakeBinding>(inflater, R.layout.fragment_water_intake, container, false)
 
-        val layoutView = inflater.inflate(R.layout.fragment_water_intake, container, false)
-        val context = layoutView.context
+        val context = binding.root.context
 
 
         sharedPref = context.getSharedPreferences(Thisapp.USERS_SHARED_PREF, Thisapp.PRIVATE_MODE)
         sqliteHelper = Sqlite(context)
 
-        val mAdView: AdView = layoutView.findViewById(R.id.adView)
+        val mAdView: AdView = binding.adView
         val adRequest =
             AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
@@ -110,7 +109,7 @@ class WaterIntakeFragment : Fragment() {
         dateNow = Thisapp.getCurrentDate()!!
 
         setHasOptionsMenu(true)
-        return layoutView
+        return binding.root
     }
 
     /**
@@ -198,7 +197,7 @@ class WaterIntakeFragment : Fragment() {
 
         // Add the selected amount to total intake
         // when + fab is pressed
-        fabAdd.setOnClickListener {
+        binding.fabAdd.setOnClickListener {
 
 
             if (selectedOption != null) {
@@ -216,17 +215,17 @@ class WaterIntakeFragment : Fragment() {
                     Snackbar.make(it, "You already achieved the goal", Snackbar.LENGTH_SHORT).show()
                 }
                 selectedOption = null
-                t6.text = "Custom"
-                op50ml.background = context.getDrawable(outValue.resourceId)
-                op100ml.background = context.getDrawable(outValue.resourceId)
-                op150ml.background = context.getDrawable(outValue.resourceId)
-                op200ml.background = context.getDrawable(outValue.resourceId)
-                op250ml.background = context.getDrawable(outValue.resourceId)
-                opCustom.background = context.getDrawable(outValue.resourceId)
+                binding.t6.text = "Custom"
+                binding.op50ml.background = context.getDrawable(outValue.resourceId)
+                binding.op100ml.background = context.getDrawable(outValue.resourceId)
+                binding.op150ml.background = context.getDrawable(outValue.resourceId)
+                binding.op200ml.background = context.getDrawable(outValue.resourceId)
+                binding.op250ml.background = context.getDrawable(outValue.resourceId)
+                binding.opCustom.background = context.getDrawable(outValue.resourceId)
             } else {
                 YoYo.with(Techniques.Shake)
                     .duration(700)
-                    .playOn(carddd)
+                    .playOn(binding.carddd)
                 Snackbar.make(it, "Please select an option", Snackbar.LENGTH_SHORT).show()
             }
         }
@@ -234,77 +233,77 @@ class WaterIntakeFragment : Fragment() {
 
 
 
-        op50ml.setOnClickListener {
+        binding.op50ml.setOnClickListener {
             if (snackbar != null) {
                 snackbar?.dismiss()
             }
             selectedOption = 50
-            op50ml.background = context!!.getDrawable(R.drawable.option_select_bg)
-            op100ml.background = context!!.getDrawable(outValue.resourceId)
-            op150ml.background = context!!.getDrawable(outValue.resourceId)
-            op200ml.background = context!!.getDrawable(outValue.resourceId)
-            op250ml.background = context!!.getDrawable(outValue.resourceId)
-            opCustom.background = context!!.getDrawable(outValue.resourceId)
+            binding.op50ml.background = context!!.getDrawable(R.drawable.option_select_bg)
+            binding.op100ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op150ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op200ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op250ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.opCustom.background = context!!.getDrawable(outValue.resourceId)
 
         }
 
-        op100ml.setOnClickListener {
+        binding.op100ml.setOnClickListener {
             if (snackbar != null) {
                 snackbar?.dismiss()
             }
             selectedOption = 100
-            op50ml.background = context!!.getDrawable(outValue.resourceId)
-            op100ml.background = context!!.getDrawable(R.drawable.option_select_bg)
-            op150ml.background = context!!.getDrawable(outValue.resourceId)
-            op200ml.background = context!!.getDrawable(outValue.resourceId)
-            op250ml.background = context!!.getDrawable(outValue.resourceId)
-            opCustom.background = context!!.getDrawable(outValue.resourceId)
+            binding.op50ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op100ml.background = context!!.getDrawable(R.drawable.option_select_bg)
+            binding.op150ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op200ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op250ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.opCustom.background = context!!.getDrawable(outValue.resourceId)
 
         }
 
-        op150ml.setOnClickListener {
+        binding.op150ml.setOnClickListener {
             if (snackbar != null) {
                 snackbar?.dismiss()
             }
             selectedOption = 150
-            op50ml.background = context!!.getDrawable(outValue.resourceId)
-            op100ml.background = context!!.getDrawable(outValue.resourceId)
-            op150ml.background = context!!.getDrawable(R.drawable.option_select_bg)
-            op200ml.background = context!!.getDrawable(outValue.resourceId)
-            op250ml.background = context!!.getDrawable(outValue.resourceId)
-            opCustom.background = context!!.getDrawable(outValue.resourceId)
+            binding.op50ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op100ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op150ml.background = context!!.getDrawable(R.drawable.option_select_bg)
+            binding.op200ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op250ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.opCustom.background = context!!.getDrawable(outValue.resourceId)
 
         }
 
-        op200ml.setOnClickListener {
+        binding.op200ml.setOnClickListener {
             if (snackbar != null) {
                 snackbar?.dismiss()
             }
             selectedOption = 200
-            op50ml.background = context!!.getDrawable(outValue.resourceId)
-            op100ml.background = context!!.getDrawable(outValue.resourceId)
-            op150ml.background = context!!.getDrawable(outValue.resourceId)
-            op200ml.background = context!!.getDrawable(R.drawable.option_select_bg)
-            op250ml.background = context!!.getDrawable(outValue.resourceId)
-            opCustom.background = context!!.getDrawable(outValue.resourceId)
+            binding.op50ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op100ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op150ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op200ml.background = context!!.getDrawable(R.drawable.option_select_bg)
+            binding.op250ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.opCustom.background = context!!.getDrawable(outValue.resourceId)
 
         }
 
-        op250ml.setOnClickListener {
+        binding.op250ml.setOnClickListener {
             if (snackbar != null) {
                 snackbar?.dismiss()
             }
             selectedOption = 250
-            op50ml.background = context!!.getDrawable(outValue.resourceId)
-            op100ml.background = context!!.getDrawable(outValue.resourceId)
-            op150ml.background = context!!.getDrawable(outValue.resourceId)
-            op200ml.background = context!!.getDrawable(outValue.resourceId)
-            op250ml.background = context!!.getDrawable(R.drawable.option_select_bg)
-            opCustom.background = context!!.getDrawable(outValue.resourceId)
+            binding.op50ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op100ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op150ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op200ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op250ml.background = context!!.getDrawable(R.drawable.option_select_bg)
+            binding.opCustom.background = context!!.getDrawable(outValue.resourceId)
 
         }
 
-        opCustom.setOnClickListener {
+        binding.opCustom.setOnClickListener {
             if (snackbar != null) {
                 snackbar?.dismiss()
             }
@@ -321,7 +320,7 @@ class WaterIntakeFragment : Fragment() {
             alertDialogBuilder.setPositiveButton("OK") { dialog, id ->
                 val inputText = userInput.editText!!.text.toString()
                 if (!TextUtils.isEmpty(inputText)) {
-                    t6.text = "${inputText} ml"
+                    binding.t6.text = "${inputText} ml"
                     selectedOption = inputText.toInt()
                 }
             }.setNegativeButton("Cancel") { dialog, id ->
@@ -331,12 +330,12 @@ class WaterIntakeFragment : Fragment() {
             val alertDialog = alertDialogBuilder.create()
             alertDialog.show()
 
-            op50ml.background = context!!.getDrawable(outValue.resourceId)
-            op100ml.background = context!!.getDrawable(outValue.resourceId)
-            op150ml.background = context!!.getDrawable(outValue.resourceId)
-            op200ml.background = context!!.getDrawable(outValue.resourceId)
-            op250ml.background = context!!.getDrawable(outValue.resourceId)
-            opCustom.background = context!!.getDrawable(R.drawable.option_select_bg)
+            binding.op50ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op100ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op150ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op200ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.op250ml.background = context!!.getDrawable(outValue.resourceId)
+            binding.opCustom.background = context!!.getDrawable(R.drawable.option_select_bg)
 
         }
 
@@ -347,16 +346,16 @@ class WaterIntakeFragment : Fragment() {
 
         YoYo.with(Techniques.SlideInDown)
             .duration(500)
-            .playOn(tvIntook)
-        tvIntook.text = "$inTook"
-        tvTotalIntake.text = "$totalIntake ml"
+            .playOn(binding.tvIntook)
+        binding.tvIntook.text = "$inTook"
+        binding.tvTotalIntake.text = "$totalIntake ml"
         val progress = ((inTook / totalIntake.toFloat()) * 100).toInt()
         YoYo.with(Techniques.Pulse)
             .duration(500)
-            .playOn(intakeProgress)
-        intakeProgress.currentProgress = progress
+            .playOn(binding.intakeProgress)
+        binding.intakeProgress.currentProgress = progress
         if ((inTook * 100 / totalIntake) > 140) {
-            Snackbar.make(main_activity_parent, "You achieved the goal", Snackbar.LENGTH_SHORT)
+            Snackbar.make(binding.root, "You achieved the goal", Snackbar.LENGTH_SHORT)
                 .show()
         }
     }
