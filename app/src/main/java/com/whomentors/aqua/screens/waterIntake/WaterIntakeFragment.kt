@@ -1,6 +1,5 @@
-package com.whomentors.aqua.screens.WaterIntake
+package com.whomentors.aqua.screens.waterIntake
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
@@ -9,8 +8,7 @@ import android.util.TypedValue
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
-import androidx.navigation.findNavController
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
@@ -20,13 +18,12 @@ import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
-import com.whomentors.aqua.Activity.Start
-import com.whomentors.aqua.Activity.UserInfo
 import com.whomentors.aqua.AppUtils.Thisapp
 import com.whomentors.aqua.Helpers.Alarm
 import com.whomentors.aqua.Helpers.Sqlite
 import com.whomentors.aqua.MainActivity
 import com.whomentors.aqua.R
+import com.whomentors.aqua.databinding.FragmentWaterIntakeBinding
 import kotlinx.android.synthetic.main.water_activity_main.*
 
 
@@ -51,6 +48,9 @@ class WaterIntakeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val binding = DataBindingUtil.inflate<FragmentWaterIntakeBinding>(inflater, R.layout.fragment_water_intake, container, false)
+        binding.mainWaterVM = this
+
         val layoutView = inflater.inflate(R.layout.fragment_water_intake, container, false)
         val context = layoutView.context
 

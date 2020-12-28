@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/userInfoFragment"
-        android:name="com.whomentors.aqua.screens.UserInfo.UserInfoFragment"
+        android:name="com.whomentors.aqua.screens.userInfo.UserInfoFragment"
         android:label="Enter User Info"
         tools:layout="@layout/fragment_user_info">
         <action
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/waterIntakeFragment"
-        android:name="com.whomentors.aqua.screens.WaterIntake.WaterIntakeFragment"
+        android:name="com.whomentors.aqua.screens.waterIntake.WaterIntakeFragment"
         android:label="Daily Drink Target"
         tools:layout="@layout/fragment_water_intake">
         <action
@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/updateUserInfoFragment"
-        android:name="com.whomentors.aqua.screens.UserInfo.UpdateUserInfoFragment"
+        android:name="com.whomentors.aqua.screens.userInfo.UpdateUserInfoFragment"
         android:label="Update User Info"
         tools:layout="@layout/fragment_update_user_info">
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/statsFragment"
-        android:name="com.whomentors.aqua.screens.Stats.StatsFragment"
+        android:name="com.whomentors.aqua.screens.stats.StatsFragment"
         android:label="Water Intake Report"
         tools:layout="@layout/fragment_stats" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.whomentors.aqua.screens.Stats
+package com.whomentors.aqua.screens.stats
 
 import android.content.SharedPreferences
 import android.database.Cursor
@@ -11,10 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.charts.Chart
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry

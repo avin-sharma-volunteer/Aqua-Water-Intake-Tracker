@@ -1,4 +1,4 @@
-package com.whomentors.aqua.screens.UserInfo
+package com.whomentors.aqua.screens.userInfo
 
 import android.app.TimePickerDialog
 import android.content.SharedPreferences

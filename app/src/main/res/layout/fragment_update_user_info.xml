@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorSecondaryLighter"
-    tools:context=".screens.UserInfo.UpdateUserInfoFragment">
+    tools:context=".screens.userInfo.UpdateUserInfoFragment">
 
 
     <RelativeLayout

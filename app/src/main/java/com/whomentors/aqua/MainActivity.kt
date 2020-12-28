@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         // Change back to main theme after splashTheme
         // https://stackoverflow.com/questions/52835697/splash-screen-approach-in-single-activity-app

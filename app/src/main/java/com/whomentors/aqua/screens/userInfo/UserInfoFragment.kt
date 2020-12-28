@@ -1,8 +1,7 @@
-package com.whomentors.aqua.screens.UserInfo
+package com.whomentors.aqua.screens.userInfo
 
 import android.app.TimePickerDialog
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
@@ -14,16 +13,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
-import android.widget.EditText
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
-import com.whomentors.aqua.Activity.Start
 import com.whomentors.aqua.AppUtils.Thisapp
 import com.whomentors.aqua.R
 import kotlinx.android.synthetic.main.fragment_user_info.*
