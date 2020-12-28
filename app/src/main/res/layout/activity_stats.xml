@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorSecondaryLighter"
-    tools:context="com.whomentors.aqua.Activity.WaterStatus">
+    tools:context="com.whomentors.aqua.activities.WaterStatus">
 
 
     <RelativeLayout

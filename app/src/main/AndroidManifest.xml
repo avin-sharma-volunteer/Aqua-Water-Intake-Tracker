@@ -35,7 +35,7 @@
             android:value="@string/admob_app_id" />
 
         <activity
-            android:name=".Activity.Splash"
+            android:name=".activities.Splash"
             android:screenOrientation="portrait"
             android:theme="@style/MainTheme">
 <!--            <intent-filter>-->
@@ -45,21 +45,21 @@
 <!--            </intent-filter>-->
         </activity>
         <activity
-            android:name=".Activity.MainWater"
+            android:name=".activities.MainWater"
             android:screenOrientation="portrait"
             android:theme="@style/MainTheme" />
         <activity
-            android:name=".Activity.WaterStatus"
+            android:name=".activities.WaterStatus"
             android:screenOrientation="portrait"
             android:theme="@style/MainTheme" />
         <activity
-            android:name=".Activity.UserInfo"
+            android:name=".activities.UserInfo"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Start"
+            android:name=".activities.Start"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.UpdateUserInfo"
+            android:name=".activities.UpdateUserInfo"
             android:screenOrientation="portrait" />
 
         <receiver android:name=".Recievers.Notifier" />

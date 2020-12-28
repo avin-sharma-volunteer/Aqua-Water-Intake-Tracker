@@ -14,7 +14,7 @@ import android.net.Uri
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.whomentors.aqua.Activity.MainWater
+import com.whomentors.aqua.activities.MainWater
 import com.whomentors.aqua.R
 import com.whomentors.aqua.AppUtils.Thisapp
 import java.util.*

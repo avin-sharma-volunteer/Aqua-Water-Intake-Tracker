@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorSecondaryLighter"
-    tools:context="com.whomentors.aqua.Activity.UserInfo">
+    tools:context="com.whomentors.aqua.activities.UserInfo">
 
 
     <androidx.cardview.widget.CardView

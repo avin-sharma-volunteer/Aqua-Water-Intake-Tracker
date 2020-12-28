@@ -1,4 +1,4 @@
-package com.whomentors.aqua.Activity
+package com.whomentors.aqua.activities
 
 import android.content.Intent
 import android.os.Bundle

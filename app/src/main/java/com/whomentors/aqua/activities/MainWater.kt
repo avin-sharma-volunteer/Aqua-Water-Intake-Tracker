@@ -1,4 +1,4 @@
-package com.whomentors.aqua.Activity
+package com.whomentors.aqua.activities
 
 
 import android.content.Intent
@@ -10,6 +10,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.google.android.gms.ads.AdListener
@@ -22,7 +23,7 @@ import com.whomentors.aqua.AppUtils.Thisapp
 import com.whomentors.aqua.Helpers.Alarm
 import com.whomentors.aqua.Helpers.Sqlite
 import com.whomentors.aqua.R
-import kotlinx.android.synthetic.main.water_activity_main.*
+import com.whomentors.aqua.databinding.WaterActivityMainBinding
 
 
 class MainWater : AppCompatActivity() {
@@ -36,10 +37,16 @@ class MainWater : AppCompatActivity() {
     private var selectedOption: Int? = null
     private var snackbar: Snackbar? = null
 
+    private lateinit var binding : WaterActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.water_activity_main)
+        //setContentView(R.layout.water_activity_main)
+
+        binding = DataBindingUtil.setContentView(this, R.layout.water_activity_main)
+        binding.mainWaterVM = this
+
 
         sharedPref = getSharedPreferences(Thisapp.USERS_SHARED_PREF, Thisapp.PRIVATE_MODE)
         sqliteHelper = Sqlite(this)
@@ -81,7 +88,7 @@ class MainWater : AppCompatActivity() {
         }
 
         // Goes back to Start Activity
-        btnBack.setOnClickListener {
+        binding.btnBack.setOnClickListener {
             startActivity(Intent(this, Start::class.java))
             finish()
         }
@@ -120,7 +127,7 @@ class MainWater : AppCompatActivity() {
         notificStatus = sharedPref.getBoolean(Thisapp.NOTIFICATION_STATUS_KEY, true)
         val alarm = Alarm()
         if (!alarm.checkAlarm(this) && notificStatus) {
-            btnNotific.setImageDrawable(getDrawable(R.drawable.ic_bell))
+            binding.btnNotific.setImageDrawable(getDrawable(R.drawable.ic_bell))
             alarm.setAlarm(
                 this,
                 sharedPref.getInt(Thisapp.NOTIFICATION_FREQUENCY_KEY, 30).toLong()
@@ -129,9 +136,9 @@ class MainWater : AppCompatActivity() {
 
         // Change notification icon based on notification status
         if (notificStatus) {
-            btnNotific.setImageDrawable(getDrawable(R.drawable.ic_bell))
+            binding.btnNotific.setImageDrawable(getDrawable(R.drawable.ic_bell))
         } else {
-            btnNotific.setImageDrawable(getDrawable(R.drawable.ic_bell_disabled))
+            binding.btnNotific.setImageDrawable(getDrawable(R.drawable.ic_bell_disabled))
         }
 
         sqliteHelper.addAll(dateNow, 0, totalIntake)
@@ -140,7 +147,7 @@ class MainWater : AppCompatActivity() {
 
         // Add the selected amount to total intake
         // when + fab is pressed
-        fabAdd.setOnClickListener {
+        binding.fabAdd.setOnClickListener {
 
 
             if (selectedOption != null) {
@@ -158,33 +165,33 @@ class MainWater : AppCompatActivity() {
                     Snackbar.make(it, "You already achieved the goal", Snackbar.LENGTH_SHORT).show()
                 }
                 selectedOption = null
-                t6.text = "Custom"
-                op50ml.background = getDrawable(outValue.resourceId)
-                op100ml.background = getDrawable(outValue.resourceId)
-                op150ml.background = getDrawable(outValue.resourceId)
-                op200ml.background = getDrawable(outValue.resourceId)
-                op250ml.background = getDrawable(outValue.resourceId)
-                opCustom.background = getDrawable(outValue.resourceId)
+                binding.t6.text = "Custom"
+                binding.op50ml.background = getDrawable(outValue.resourceId)
+                binding.op100ml.background = getDrawable(outValue.resourceId)
+                binding.op150ml.background = getDrawable(outValue.resourceId)
+                binding.op200ml.background = getDrawable(outValue.resourceId)
+                binding.op250ml.background = getDrawable(outValue.resourceId)
+                binding.opCustom.background = getDrawable(outValue.resourceId)
             } else {
                 YoYo.with(Techniques.Shake)
                     .duration(700)
-                    .playOn(carddd)
+                    .playOn(binding.carddd)
                 Snackbar.make(it, "Please select an option", Snackbar.LENGTH_SHORT).show()
             }
         }
 
-        btnNotific.setOnClickListener {
+        binding.btnNotific.setOnClickListener {
             notificStatus = !notificStatus
             sharedPref.edit().putBoolean(Thisapp.NOTIFICATION_STATUS_KEY, notificStatus).apply()
             if (notificStatus) {
-                btnNotific.setImageDrawable(getDrawable(R.drawable.ic_bell))
+                binding.btnNotific.setImageDrawable(getDrawable(R.drawable.ic_bell))
                 Snackbar.make(it, "Notification Enabled..", Snackbar.LENGTH_SHORT).show()
                 alarm.setAlarm(
                     this,
                     sharedPref.getInt(Thisapp.NOTIFICATION_FREQUENCY_KEY, 30).toLong()
                 )
             } else {
-                btnNotific.setImageDrawable(getDrawable(R.drawable.ic_bell_disabled))
+                binding.btnNotific.setImageDrawable(getDrawable(R.drawable.ic_bell_disabled))
                 Snackbar.make(it, "Notification Disabled..", Snackbar.LENGTH_SHORT).show()
                 alarm.cancelAlarm(this)
             }
@@ -192,77 +199,77 @@ class MainWater : AppCompatActivity() {
 
 
 
-        op50ml.setOnClickListener {
+        binding.op50ml.setOnClickListener {
             if (snackbar != null) {
                 snackbar?.dismiss()
             }
             selectedOption = 50
-            op50ml.background = getDrawable(R.drawable.option_select_bg)
-            op100ml.background = getDrawable(outValue.resourceId)
-            op150ml.background = getDrawable(outValue.resourceId)
-            op200ml.background = getDrawable(outValue.resourceId)
-            op250ml.background = getDrawable(outValue.resourceId)
-            opCustom.background = getDrawable(outValue.resourceId)
+            binding.op50ml.background = getDrawable(R.drawable.option_select_bg)
+            binding.op100ml.background = getDrawable(outValue.resourceId)
+            binding.op150ml.background = getDrawable(outValue.resourceId)
+            binding.op200ml.background = getDrawable(outValue.resourceId)
+            binding.op250ml.background = getDrawable(outValue.resourceId)
+            binding.opCustom.background = getDrawable(outValue.resourceId)
 
         }
 
-        op100ml.setOnClickListener {
+        binding.op100ml.setOnClickListener {
             if (snackbar != null) {
                 snackbar?.dismiss()
             }
             selectedOption = 100
-            op50ml.background = getDrawable(outValue.resourceId)
-            op100ml.background = getDrawable(R.drawable.option_select_bg)
-            op150ml.background = getDrawable(outValue.resourceId)
-            op200ml.background = getDrawable(outValue.resourceId)
-            op250ml.background = getDrawable(outValue.resourceId)
-            opCustom.background = getDrawable(outValue.resourceId)
+            binding.op50ml.background = getDrawable(outValue.resourceId)
+            binding.op100ml.background = getDrawable(R.drawable.option_select_bg)
+            binding.op150ml.background = getDrawable(outValue.resourceId)
+            binding.op200ml.background = getDrawable(outValue.resourceId)
+            binding.op250ml.background = getDrawable(outValue.resourceId)
+            binding.opCustom.background = getDrawable(outValue.resourceId)
 
         }
 
-        op150ml.setOnClickListener {
+        binding.op150ml.setOnClickListener {
             if (snackbar != null) {
                 snackbar?.dismiss()
             }
             selectedOption = 150
-            op50ml.background = getDrawable(outValue.resourceId)
-            op100ml.background = getDrawable(outValue.resourceId)
-            op150ml.background = getDrawable(R.drawable.option_select_bg)
-            op200ml.background = getDrawable(outValue.resourceId)
-            op250ml.background = getDrawable(outValue.resourceId)
-            opCustom.background = getDrawable(outValue.resourceId)
+            binding.op50ml.background = getDrawable(outValue.resourceId)
+            binding.op100ml.background = getDrawable(outValue.resourceId)
+            binding.op150ml.background = getDrawable(R.drawable.option_select_bg)
+            binding.op200ml.background = getDrawable(outValue.resourceId)
+            binding.op250ml.background = getDrawable(outValue.resourceId)
+            binding.opCustom.background = getDrawable(outValue.resourceId)
 
         }
 
-        op200ml.setOnClickListener {
+        binding.op200ml.setOnClickListener {
             if (snackbar != null) {
                 snackbar?.dismiss()
             }
             selectedOption = 200
-            op50ml.background = getDrawable(outValue.resourceId)
-            op100ml.background = getDrawable(outValue.resourceId)
-            op150ml.background = getDrawable(outValue.resourceId)
-            op200ml.background = getDrawable(R.drawable.option_select_bg)
-            op250ml.background = getDrawable(outValue.resourceId)
-            opCustom.background = getDrawable(outValue.resourceId)
+            binding.op50ml.background = getDrawable(outValue.resourceId)
+            binding.op100ml.background = getDrawable(outValue.resourceId)
+            binding.op150ml.background = getDrawable(outValue.resourceId)
+            binding.op200ml.background = getDrawable(R.drawable.option_select_bg)
+            binding.op250ml.background = getDrawable(outValue.resourceId)
+            binding.opCustom.background = getDrawable(outValue.resourceId)
 
         }
 
-        op250ml.setOnClickListener {
+        binding.op250ml.setOnClickListener {
             if (snackbar != null) {
                 snackbar?.dismiss()
             }
             selectedOption = 250
-            op50ml.background = getDrawable(outValue.resourceId)
-            op100ml.background = getDrawable(outValue.resourceId)
-            op150ml.background = getDrawable(outValue.resourceId)
-            op200ml.background = getDrawable(outValue.resourceId)
-            op250ml.background = getDrawable(R.drawable.option_select_bg)
-            opCustom.background = getDrawable(outValue.resourceId)
+            binding.op50ml.background = getDrawable(outValue.resourceId)
+            binding.op100ml.background = getDrawable(outValue.resourceId)
+            binding.op150ml.background = getDrawable(outValue.resourceId)
+            binding.op200ml.background = getDrawable(outValue.resourceId)
+            binding.op250ml.background = getDrawable(R.drawable.option_select_bg)
+            binding.opCustom.background = getDrawable(outValue.resourceId)
 
         }
 
-        opCustom.setOnClickListener {
+        binding.opCustom.setOnClickListener {
             if (snackbar != null) {
                 snackbar?.dismiss()
             }
@@ -279,7 +286,7 @@ class MainWater : AppCompatActivity() {
             alertDialogBuilder.setPositiveButton("OK") { dialog, id ->
                 val inputText = userInput.editText!!.text.toString()
                 if (!TextUtils.isEmpty(inputText)) {
-                    t6.text = "${inputText} ml"
+                    binding.t6.text = "${inputText} ml"
                     selectedOption = inputText.toInt()
                 }
             }.setNegativeButton("Cancel") { dialog, id ->
@@ -289,12 +296,12 @@ class MainWater : AppCompatActivity() {
             val alertDialog = alertDialogBuilder.create()
             alertDialog.show()
 
-            op50ml.background = getDrawable(outValue.resourceId)
-            op100ml.background = getDrawable(outValue.resourceId)
-            op150ml.background = getDrawable(outValue.resourceId)
-            op200ml.background = getDrawable(outValue.resourceId)
-            op250ml.background = getDrawable(outValue.resourceId)
-            opCustom.background = getDrawable(R.drawable.option_select_bg)
+            binding.op50ml.background = getDrawable(outValue.resourceId)
+            binding.op100ml.background = getDrawable(outValue.resourceId)
+            binding.op150ml.background = getDrawable(outValue.resourceId)
+            binding.op200ml.background = getDrawable(outValue.resourceId)
+            binding.op250ml.background = getDrawable(outValue.resourceId)
+            binding.opCustom.background = getDrawable(R.drawable.option_select_bg)
 
         }
 
@@ -305,16 +312,18 @@ class MainWater : AppCompatActivity() {
 
         YoYo.with(Techniques.SlideInDown)
             .duration(500)
-            .playOn(tvIntook)
-        tvIntook.text = "$inTook"
-        tvTotalIntake.text = "$totalIntake ml"
+            .playOn(binding.tvIntook)
+        binding.tvIntook.text = "$inTook"
+        binding.tvTotalIntake.text = "$totalIntake ml"
         val progress = ((inTook / totalIntake.toFloat()) * 100).toInt()
         YoYo.with(Techniques.Pulse)
             .duration(500)
-            .playOn(intakeProgress)
-        intakeProgress.currentProgress = progress
+            .playOn(binding.intakeProgress)
+        binding.intakeProgress.currentProgress = progress
         if ((inTook * 100 / totalIntake) > 140) {
-            Snackbar.make(main_activity_parent, "You achieved the goal", Snackbar.LENGTH_SHORT)
+//            Snackbar.make(main_activity_parent, "You achieved the goal", Snackbar.LENGTH_SHORT)
+//                .show()
+            Snackbar.make(binding.root, "You achieved the goal", Snackbar.LENGTH_SHORT)
                 .show()
         }
     }
