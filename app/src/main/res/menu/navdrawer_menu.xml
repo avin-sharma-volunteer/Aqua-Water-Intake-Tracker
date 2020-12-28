@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/statsFragment"
+        android:icon="@drawable/ic_baseline_stats_24"
+        android:title="Stats" />
+    <item
+        android:id="@+id/updateUserInfoFragment"
+        android:icon="@drawable/ic_baseline_edit_24"
+        android:title="@string/edit_info_text" />
+    <item
+        android:id="@+id/rateApp"
+        android:icon="@drawable/ic_baseline_star_rate_24"
+        android:title="Rate App" />
+    <item
+        android:id="@+id/shareApp"
+        android:icon="@drawable/ic_baseline_share_24"
+        android:title="Share App" />
+    <item
+        android:id="@+id/privacyPolicy"
+        android:icon="@drawable/ic_baseline_privacy_24"
+        android:title="Privacy Policy" />
+</menu>

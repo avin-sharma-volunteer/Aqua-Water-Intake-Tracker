@@ -1,34 +1,39 @@
-package com.whomentors.aqua.Activity
+package com.whomentors.aqua.screens.userInfo
 
 import android.app.TimePickerDialog
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
 import android.text.TextUtils
 import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.AppCompatActivity
-import com.whomentors.aqua.AppUtils.Thisapp
-import com.whomentors.aqua.R
+import android.widget.Button
+import androidx.navigation.findNavController
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_init_user_info.*
+import com.google.android.material.textfield.TextInputLayout
+import com.whomentors.aqua.AppUtils.Thisapp
+import com.whomentors.aqua.R
+import kotlinx.android.synthetic.main.fragment_user_info.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.util.*
 
+
 /**
- * First activity shown after the splash screen
- * if the app is run for the first time.
+ * A simple [Fragment] subclass.
+ * Use the [UserInfoFragment.newInstance] factory method to
+ * create an instance of this fragment.
  */
-class UserInfo : AppCompatActivity() {
+class UserInfoFragment : Fragment() {
 
     private var weight: String = ""
     private var workTime: String = ""
@@ -38,23 +43,36 @@ class UserInfo : AppCompatActivity() {
     private lateinit var sharedPref: SharedPreferences
     private var doubleBackToExitPressedOnce = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val layoutView = inflater.inflate(R.layout.fragment_user_info, container, false)
+        val context = layoutView.context
+
+
+        val etWakeUpTime: TextInputLayout = layoutView.findViewById(R.id.etWakeUpTime)
+        val etSleepTime: TextInputLayout = layoutView.findViewById(R.id.etSleepTime);
+        val btnContinue: Button = layoutView.findViewById(R.id.btnContinue)
+        val etWeight: TextInputLayout = layoutView.findViewById(R.id.etWeight)
+        val etName: TextInputLayout = layoutView.findViewById(R.id.etName)
+        val etWorkTime: TextInputLayout = layoutView.findViewById(R.id.etWorkTime)
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
-        setContentView(R.layout.activity_init_user_info)
 
 
         // Find and initialize AdView
-        val mAdView: AdView = findViewById(R.id.adView)
+        val mAdView: AdView = layoutView.findViewById(R.id.adView)
         val adRequest =
             AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
 
         // Load interstitialAd
         // https://developers.google.com/admob/android/interstitial
-        val mInterstitialAd = InterstitialAd(this)
+        val mInterstitialAd = InterstitialAd(context)
         mInterstitialAd.adUnitId = getString(R.string.g_inr)
         mInterstitialAd.loadAd(AdRequest.Builder().build())
         mInterstitialAd.adListener = object : AdListener() {
@@ -87,7 +105,7 @@ class UserInfo : AppCompatActivity() {
 
         // Fetch wakeup and sleeping time from shared preferences
 
-        sharedPref = getSharedPreferences(Thisapp.USERS_SHARED_PREF, Thisapp.PRIVATE_MODE)
+        sharedPref = context.getSharedPreferences(Thisapp.USERS_SHARED_PREF, Thisapp.PRIVATE_MODE)
 
         wakeupTime = sharedPref.getLong(Thisapp.WAKEUP_TIME, 1558323000000)
         sleepingTime = sharedPref.getLong(Thisapp.SLEEPING_TIME_KEY, 1558369800000)
@@ -102,7 +120,7 @@ class UserInfo : AppCompatActivity() {
             // saved wakeup time
             val mTimePicker: TimePickerDialog
             mTimePicker = TimePickerDialog(
-                this,
+                context,
                 TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
 
                     val time = Calendar.getInstance()
@@ -129,7 +147,7 @@ class UserInfo : AppCompatActivity() {
 
             val mTimePicker: TimePickerDialog
             mTimePicker = TimePickerDialog(
-                this,
+                context,
                 TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
 
                     val time = Calendar.getInstance()
@@ -152,7 +170,7 @@ class UserInfo : AppCompatActivity() {
         btnContinue.setOnClickListener {
 
             val imm: InputMethodManager =
-                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(init_user_info_parent_layout.windowToken, 0)
 
             weight = etWeight.editText!!.text.toString()
@@ -162,30 +180,30 @@ class UserInfo : AppCompatActivity() {
             // Do empty checks
             when {
                 TextUtils.isEmpty(name) -> Snackbar.make(
-                    it,
+                    layoutView,
                     "Please Enter Your Name",
                     Snackbar.LENGTH_SHORT
                 ).show()
 
                 TextUtils.isEmpty(weight) -> Snackbar.make(
-                    it,
+                    layoutView,
                     "Please input your weight",
                     Snackbar.LENGTH_SHORT
                 ).show()
                 weight.toInt() > 200 || weight.toInt() < 20 -> Snackbar.make(
-                    it,
+                    layoutView,
                     "Please input a valid weight",
                     Snackbar.LENGTH_SHORT
                 ).show()
 
                 TextUtils.isEmpty(workTime) -> Snackbar.make(
-                    it,
+                    layoutView,
                     "Please input your workout time",
                     Snackbar.LENGTH_SHORT
                 ).show()
 
                 workTime.toInt() > 500 || workTime.toInt() < 0 -> Snackbar.make(
-                    it,
+                    layoutView,
                     "Please input a valid workout time",
                     Snackbar.LENGTH_SHORT
                 ).show()
@@ -208,28 +226,13 @@ class UserInfo : AppCompatActivity() {
                     editor.putInt(Thisapp.TOTAL_INTAKE, df.format(totalIntake).toInt())
 
                     editor.apply()
-                    startActivity(Intent(this, Start::class.java))
-                    finish()
+
+                    it.findNavController().navigate(R.id.action_userInfoFragment_to_waterIntakeFragment)
 
                 }
             }
         }
-
+        return layoutView
     }
 
-    override fun onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed()
-            return
-        }
-
-        this.doubleBackToExitPressedOnce = true
-        Snackbar.make(
-            this.window.decorView.findViewById(android.R.id.content),
-            "Please click BACK again to exit",
-            Snackbar.LENGTH_SHORT
-        ).show()
-
-        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 1000)
-    }
 }

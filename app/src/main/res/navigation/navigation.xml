@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    android:label="Enter User Info"
+    app:startDestination="@id/waterIntakeFragment">
+
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.whomentors.aqua.screens.userInfo.UserInfoFragment"
+        android:label="Enter User Info"
+        tools:layout="@layout/fragment_user_info">
+        <action
+            android:id="@+id/action_userInfoFragment_to_waterIntakeFragment"
+            app:destination="@id/waterIntakeFragment"
+            app:popUpTo="@id/userInfoFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/waterIntakeFragment"
+        android:name="com.whomentors.aqua.screens.waterIntake.WaterIntakeFragment"
+        android:label="Daily Drink Target"
+        tools:layout="@layout/fragment_water_intake">
+        <action
+            android:id="@+id/action_waterIntakeFragment_to_userInfoFragment"
+            app:destination="@id/userInfoFragment"
+            app:popUpTo="@id/waterIntakeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/updateUserInfoFragment"
+        android:name="com.whomentors.aqua.screens.userInfo.UpdateUserInfoFragment"
+        android:label="Update User Info"
+        tools:layout="@layout/fragment_update_user_info">
+        <action
+            android:id="@+id/action_updateUserInfoFragment_to_waterIntakeFragment"
+            app:destination="@id/waterIntakeFragment"
+            app:popUpTo="@id/navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/statsFragment"
+        android:name="com.whomentors.aqua.screens.stats.StatsFragment"
+        android:label="Water Intake Report"
+        tools:layout="@layout/fragment_stats" />
+</navigation>
