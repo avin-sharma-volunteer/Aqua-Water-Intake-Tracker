@@ -10,13 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.whomentors.aqua.AppUtils.Thisapp
 import com.whomentors.aqua.Helpers.Alarm
 import com.whomentors.aqua.Helpers.Sqlite
 import com.whomentors.aqua.R
-import kotlinx.android.synthetic.main.bottom_sheet_fragment.*
+import com.whomentors.aqua.databinding.FragmentUpdateUserInfoBinding
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.util.*
@@ -37,21 +38,24 @@ class UpdateUserInfoFragment : Fragment() {
     private var notificMsg: String = ""
     private var Constant: String = "%02d:%02d"
 
+    // DataBinding object
+    private lateinit var binding: FragmentUpdateUserInfoBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val layoutView = inflater.inflate(R.layout.fragment_update_user_info, container, false)
-        val context = layoutView.context
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_update_user_info, container, false)
+        val context = binding.root.context
 
-        val etWakeUpTime: TextInputLayout = layoutView.findViewById(R.id.etWakeUpTime)
-        val etSleepTime: TextInputLayout = layoutView.findViewById(R.id.etSleepTime);
-        val etWeight: TextInputLayout = layoutView.findViewById(R.id.etWeight)
-        val etWorkTime: TextInputLayout = layoutView.findViewById(R.id.etWorkTime)
-        val etTarget: TextInputLayout = layoutView.findViewById(R.id.etTarget);
-        val etNotificationText: TextInputLayout = layoutView.findViewById(R.id.etNotificationText)
-        val btnUpdate: Button = layoutView.findViewById(R.id.btnUpdate)
+        val etWakeUpTime: TextInputLayout = binding.etWakeUpTime
+        val etSleepTime: TextInputLayout = binding.etSleepTime
+        val etWeight: TextInputLayout = binding.etWeight
+        val etWorkTime: TextInputLayout = binding.etWorkTime
+        val etTarget: TextInputLayout = binding.etTarget
+        val etNotificationText: TextInputLayout = binding.etNotificationText
+        val btnUpdate: Button = binding.btnUpdate
 
         sharedPref = context.getSharedPreferences(Thisapp.USERS_SHARED_PREF, Thisapp.PRIVATE_MODE)
 
@@ -246,6 +250,6 @@ class UpdateUserInfoFragment : Fragment() {
                 }
             }
         }
-        return layoutView
+        return binding.root
     }
 }
