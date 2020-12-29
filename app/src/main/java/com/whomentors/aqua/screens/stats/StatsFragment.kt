@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
@@ -26,6 +27,7 @@ import com.whomentors.aqua.AppUtils.Chartres
 import com.whomentors.aqua.AppUtils.Thisapp
 import com.whomentors.aqua.Helpers.Sqlite
 import com.whomentors.aqua.R
+import com.whomentors.aqua.databinding.FragmentStatsBinding
 import kotlinx.android.synthetic.main.activity_stats.*
 import me.itangqi.waveloadingview.WaveLoadingView
 
@@ -41,18 +43,20 @@ class StatsFragment : Fragment() {
     private var totalPercentage: Float = 0f
     private var totalGlasses: Float = 0f
 
+    private lateinit var binding: FragmentStatsBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val layoutView = inflater.inflate(R.layout.fragment_stats, container, false)
-        val context = layoutView.context
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_stats, container, false)
+        val context = binding.root.context
 
-        val chart: LineChart = layoutView.findViewById(R.id.chart)
-        val remainingIntake: TextView = layoutView.findViewById(R.id.remainingIntake)
-        val targetIntake: TextView = layoutView.findViewById(R.id.targetIntake)
-        val waterLevelView: WaveLoadingView = layoutView.findViewById(R.id.waterLevelView)
+        val chart: LineChart = binding.chart
+        val remainingIntake: TextView = binding.remainingIntake
+        val targetIntake: TextView = binding.targetIntake
+        val waterLevelView: WaveLoadingView = binding.waterLevelView
 
         sharedPref = context.getSharedPreferences(Thisapp.USERS_SHARED_PREF, Thisapp.PRIVATE_MODE)
         sqliteHelper = Sqlite(context)
@@ -87,7 +91,7 @@ class StatsFragment : Fragment() {
                 Log.d("","hello")
             }
         }
-        val mAdView: AdView = layoutView.findViewById(R.id.adView)
+        val mAdView: AdView = binding.adView
         val adRequest =
             AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
@@ -189,7 +193,7 @@ class StatsFragment : Fragment() {
 
         }
 
-        return layoutView
+        return binding.root
     }
 
 }
