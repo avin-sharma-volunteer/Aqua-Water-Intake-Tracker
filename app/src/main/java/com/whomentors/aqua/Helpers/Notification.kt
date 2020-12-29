@@ -14,9 +14,9 @@ import android.net.Uri
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.whomentors.aqua.Activity.MainWater
 import com.whomentors.aqua.R
 import com.whomentors.aqua.AppUtils.Thisapp
+import com.whomentors.aqua.MainActivity
 import java.util.*
 
 class Notification(val ctx: Context) {
@@ -78,7 +78,7 @@ class Notification(val ctx: Context) {
 
         notification.setSound(Uri.parse(notificationsTone))
 
-        val notificationIntent = Intent(ctx, MainWater::class.java)
+        val notificationIntent = Intent(ctx, MainActivity::class.java)
 
         notificationIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         val contentIntent =
