@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
@@ -22,7 +23,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.whomentors.aqua.AppUtils.Thisapp
 import com.whomentors.aqua.R
-import kotlinx.android.synthetic.main.fragment_user_info.*
+import com.whomentors.aqua.databinding.FragmentUpdateUserInfoBinding
+import com.whomentors.aqua.databinding.FragmentUserInfoBinding
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.util.*
@@ -43,21 +45,24 @@ class UserInfoFragment : Fragment() {
     private lateinit var sharedPref: SharedPreferences
     private var doubleBackToExitPressedOnce = false
 
+    // DataBinding object
+    private lateinit var binding: FragmentUserInfoBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val layoutView = inflater.inflate(R.layout.fragment_user_info, container, false)
-        val context = layoutView.context
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_info, container, false)
+        val context = binding.root.context
 
 
-        val etWakeUpTime: TextInputLayout = layoutView.findViewById(R.id.etWakeUpTime)
-        val etSleepTime: TextInputLayout = layoutView.findViewById(R.id.etSleepTime);
-        val btnContinue: Button = layoutView.findViewById(R.id.btnContinue)
-        val etWeight: TextInputLayout = layoutView.findViewById(R.id.etWeight)
-        val etName: TextInputLayout = layoutView.findViewById(R.id.etName)
-        val etWorkTime: TextInputLayout = layoutView.findViewById(R.id.etWorkTime)
+        val etWakeUpTime: TextInputLayout = binding.etWakeUpTime
+        val etSleepTime: TextInputLayout = binding.etSleepTime
+        val btnContinue: Button = binding.btnContinue
+        val etWeight: TextInputLayout = binding.etWeight
+        val etName: TextInputLayout = binding.etName
+        val etWorkTime: TextInputLayout = binding.etWorkTime
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
@@ -65,7 +70,7 @@ class UserInfoFragment : Fragment() {
 
 
         // Find and initialize AdView
-        val mAdView: AdView = layoutView.findViewById(R.id.adView)
+        val mAdView: AdView = binding.adView
         val adRequest =
             AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
@@ -171,7 +176,7 @@ class UserInfoFragment : Fragment() {
 
             val imm: InputMethodManager =
                 context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(init_user_info_parent_layout.windowToken, 0)
+            imm.hideSoftInputFromWindow(binding.initUserInfoParentLayout.windowToken, 0)
 
             weight = etWeight.editText!!.text.toString()
             name = etName.editText!!.text.toString()
@@ -180,30 +185,30 @@ class UserInfoFragment : Fragment() {
             // Do empty checks
             when {
                 TextUtils.isEmpty(name) -> Snackbar.make(
-                    layoutView,
+                    binding.root,
                     "Please Enter Your Name",
                     Snackbar.LENGTH_SHORT
                 ).show()
 
                 TextUtils.isEmpty(weight) -> Snackbar.make(
-                    layoutView,
+                    binding.root,
                     "Please input your weight",
                     Snackbar.LENGTH_SHORT
                 ).show()
                 weight.toInt() > 200 || weight.toInt() < 20 -> Snackbar.make(
-                    layoutView,
+                    binding.root,
                     "Please input a valid weight",
                     Snackbar.LENGTH_SHORT
                 ).show()
 
                 TextUtils.isEmpty(workTime) -> Snackbar.make(
-                    layoutView,
+                    binding.root,
                     "Please input your workout time",
                     Snackbar.LENGTH_SHORT
                 ).show()
 
                 workTime.toInt() > 500 || workTime.toInt() < 0 -> Snackbar.make(
-                    layoutView,
+                    binding.root,
                     "Please input a valid workout time",
                     Snackbar.LENGTH_SHORT
                 ).show()
@@ -232,7 +237,7 @@ class UserInfoFragment : Fragment() {
                 }
             }
         }
-        return layoutView
+        return binding.root
     }
 
 }
