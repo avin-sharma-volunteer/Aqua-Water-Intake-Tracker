@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
 class Alarm {
     private var alarmManager: AlarmManager? = null
 
-    private val ACTION_BD_NOTIFICATION = "com.ownapps.waterreminder.NOTIFICATION"
+    private val ACTION_BD_NOTIFICATION = "com.whomentors.aqua.NOTIFICATION"
 
     fun setAlarm(context: Context, notificationFrequency: Long) {
         val notificationFrequencyMs = TimeUnit.MINUTES.toMillis(notificationFrequency)

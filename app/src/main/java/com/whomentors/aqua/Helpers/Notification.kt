@@ -22,7 +22,7 @@ import java.util.*
 class Notification(val ctx: Context) {
     private var notificationManager: NotificationManager? = null
 
-    private val CHANNEL_ONE_ID = "com.ownapps.waterreminder.CHANNELONE"
+    private val CHANNEL_ONE_ID = "com.whomentors.aqua.CHANNELONE"
     private val CHANNEL_ONE_NAME = "Channel One"
 
 
