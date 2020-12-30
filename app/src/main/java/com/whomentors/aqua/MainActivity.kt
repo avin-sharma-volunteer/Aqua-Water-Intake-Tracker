@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.privacyPolicy -> {
-                    val url = "https://www.google.com/"
+                    val url = "https://www.whomentors.com/"
                     val i = Intent(Intent.ACTION_VIEW)
                     i.data = Uri.parse(url)
                     startActivity(i)
