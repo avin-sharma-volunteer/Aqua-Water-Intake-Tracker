@@ -5,8 +5,8 @@
 
     <item>
         <bitmap
-            android:gravity="center"
-            android:src="@mipmap/splash"/>
+            android:gravity="fill"
+            android:src="@mipmap/android_launch_screen"/>
     </item>
 
 </layer-list>
