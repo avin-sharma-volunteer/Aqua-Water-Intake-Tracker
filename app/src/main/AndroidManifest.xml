@@ -34,33 +34,6 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_app_id" />
 
-        <activity
-            android:name=".Activity.Splash"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainTheme">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
-        <activity
-            android:name=".Activity.MainWater"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainTheme" />
-        <activity
-            android:name=".Activity.WaterStatus"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainTheme" />
-        <activity
-            android:name=".Activity.UserInfo"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activity.Start"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activity.UpdateUserInfo"
-            android:screenOrientation="portrait" />
 
         <receiver android:name=".Recievers.Notifier" />
         <receiver android:name=".Recievers.Boot">
