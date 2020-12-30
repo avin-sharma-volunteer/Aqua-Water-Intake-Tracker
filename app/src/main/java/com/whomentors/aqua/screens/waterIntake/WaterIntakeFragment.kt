@@ -66,7 +66,7 @@ class WaterIntakeFragment : Fragment() {
         // https://developers.google.com/admob/android/interstitial
         val mInterstitialAd = InterstitialAd(context)
         mInterstitialAd.adUnitId = getString(R.string.g_inr)
-        mInterstitialAd.loadAd(AdRequest.Builder().build())
+//        mInterstitialAd.loadAd(AdRequest.Builder().build())
         mInterstitialAd.adListener = object : AdListener() {
             override fun onAdLoaded() {
                 mInterstitialAd.show()
