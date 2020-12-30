@@ -9,12 +9,9 @@ import android.view.MenuItem
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.*
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
-import com.whomentors.aqua.Activity.Start
-import com.whomentors.aqua.Activity.UserInfo
+
 
 class MainActivity : AppCompatActivity() {
 
