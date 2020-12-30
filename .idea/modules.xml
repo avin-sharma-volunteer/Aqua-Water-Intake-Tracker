@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Aqua-Water-Intake-Tracker.iml" filepath="$PROJECT_DIR$/.idea/modules/Aqua-Water-Intake-Tracker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Aqua-Water-Intake-Tracker.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Aqua-Water-Intake-Tracker.app.iml" />
-    </modules>
-  </component>
-</project>
