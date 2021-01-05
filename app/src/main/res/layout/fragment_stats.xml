@@ -1,177 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorSecondaryLighter"
-        tools:context=".screens.stats.StatsFragment">
+        android:background="@color/colorSecondaryLighter">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="20dp"
+            app:layout_constraintBottom_toTopOf="@id/remaining_intake_label_text_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".6">
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/adView">
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
-                android:layout_width="230dp"
+            <me.itangqi.waveloadingview.WaveLoadingView
+                android:id="@+id/waterLevelView"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/rel2"
-                android:layout_below="@+id/top_rel"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="20dp">
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
+                app:wlv_borderColor="@color/colorBlack"
+                app:wlv_borderWidth="8dp"
+                app:wlv_progressValue="70"
+                app:wlv_round_rectangle="true"
+                app:wlv_shapeType="rectangle"
+                app:wlv_titleCenter="0%"
+                app:wlv_titleCenterColor="@color/colorWhite"
+                app:wlv_titleCenterSize="30sp"
+                app:wlv_titleCenterStrokeColor="@android:color/black"
+                app:wlv_titleCenterStrokeWidth="2dp"
+                app:wlv_triangle_direction="north"
+                app:wlv_waveAmplitude="60"
+                app:wlv_waveColor="@color/colorDark" />
 
 
-                <me.itangqi.waveloadingview.WaveLoadingView
-                    android:id="@+id/waterLevelView"
-                    android:layout_width="220dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginBottom="5dp"
-                    app:wlv_borderColor="@color/colorBlack"
-                    app:wlv_borderWidth="8dp"
-                    app:wlv_progressValue="70"
-                    app:wlv_round_rectangle="true"
-                    app:wlv_shapeType="rectangle"
-                    app:wlv_titleCenter="0%"
-                    app:wlv_titleCenterColor="@color/colorWhite"
-                    app:wlv_titleCenterSize="30sp"
-                    app:wlv_titleCenterStrokeColor="@android:color/black"
-                    app:wlv_titleCenterStrokeWidth="2dp"
-                    app:wlv_triangle_direction="north"
-                    app:wlv_waveAmplitude="60"
-                    app:wlv_waveColor="@color/colorDark" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/remaining_intake_label_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/baloo"
+            android:text="Remaining"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/remainingIntake"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardView" />
+
+        <TextView
+            android:id="@+id/remainingIntake"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rect"
+            android:fontFamily="@font/gothic"
+            android:text="1000 ml"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/target_label_text_view"
+            app:layout_constraintEnd_toEndOf="@id/remaining_intake_label_text_view"
+            app:layout_constraintStart_toStartOf="@id/remaining_intake_label_text_view"
+            app:layout_constraintTop_toBottomOf="@id/remaining_intake_label_text_view" />
+
+        <TextView
+            android:id="@+id/target_label_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/baloo"
+            android:text="Target"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/targetIntake"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/remainingIntake" />
+
+        <TextView
+            android:id="@+id/targetIntake"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rect"
+            android:fontFamily="@font/gothic"
+            android:text="1000 ml"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/water_summary_label_text_view"
+            app:layout_constraintEnd_toEndOf="@id/remainingIntake"
+            app:layout_constraintStart_toStartOf="@id/remainingIntake"
+            app:layout_constraintTop_toBottomOf="@id/target_label_text_view" />
 
 
-            </androidx.cardview.widget.CardView>
-
-            <RelativeLayout
-                android:id="@+id/rel2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/textView14"
-                tools:ignore="MissingConstraints">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp">
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:layout_marginBottom="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/rect"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/linearLayout8"
-                        app:layout_constraintStart_toStartOf="parent">
-
-                        <TextView
-                            android:id="@+id/textView10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/baloo"
-                            android:text="Remaining"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="18dp" />
-
-                        <TextView
-                            android:id="@+id/remainingIntake"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/gothic"
-                            android:text="0 ml"
-                            android:textSize="18sp" />
-                    </LinearLayout>
+        <TextView
+            android:id="@+id/water_summary_label_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/chart"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/kanit"
+            android:text="Water Summary"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/chart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/targetIntake" />
 
 
-                    <LinearLayout
-                        android:id="@+id/linearLayout8"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:layout_marginBottom="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/rect"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/linearLayout7">
-
-                        <TextView
-                            android:id="@+id/textView12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/baloo"
-                            android:text="Target"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="18dp" />
-
-                        <TextView
-                            android:id="@+id/targetIntake"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/gothic"
-                            android:text="1000 ml"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
-
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/chart"
-
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/kanit"
-                android:text="Water Summary"
-                android:textAlignment="center"
-                android:textColor="@color/colorBlack"
-                android:textSize="20sp" />
-
-
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/chart"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </RelativeLayout>
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/adView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/water_summary_label_text_view" />
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_gravity="center"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/google_baner" />
+            app:adSize="BANNER"
+            app:adUnitId="@string/google_baner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
