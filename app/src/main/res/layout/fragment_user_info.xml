@@ -1,321 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/init_user_info_parent_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorSecondaryLighter"
-        tools:context=".screens.userInfo.UserInfoFragment">
+        tools:context=".screens.userInfo.UserInfoFragment"
+        android:padding="8dp">
 
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardviewone"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView5"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="20dp"
-            android:orientation="horizontal"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="20dip" />
+            android:fontFamily="@font/baloo"
+            android:text="@string/add_info_text"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintBottom_toTopOf="@id/etName"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
-        <ScrollView
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/bottom_rel"
-            android:layout_below="@+id/cardviewone"
-            android:layout_marginTop="10dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:scrollbars="none">
+            android:background="@drawable/rect"
+            android:hint="@string/enter_name"
+            app:layout_constraintTop_toBottomOf="@id/textView3"
+            app:layout_constraintBottom_toTopOf="@+id/etWeight"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
-
-            <RelativeLayout
-                android:id="@+id/constraintLayout"
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp">
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:fontFamily="@font/gothic"
+                android:inputType="text"
+                android:maxLength="3"
+                android:textAlignment="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/baloo"
-                    android:text="@string/add_info_text"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="18sp" />
-
-                <LinearLayout
-                    android:id="@+id/lin1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView3"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:id="@+id/t1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:fontFamily="@font/gothic"
-                            android:gravity="center"
-                            android:text="@string/enter_name"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/etName"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_below="@+id/t1"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="16dp"
-                            android:background="@drawable/rect">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:background="@null"
-                                android:fontFamily="@font/gothic"
-                                android:inputType="text"
-                                android:paddingBottom="10dp"
-                                android:textAlignment="center" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:id="@+id/t2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-
-                            android:fontFamily="@font/gothic"
-                            android:gravity="center"
-                            android:singleLine="true"
-                            android:text="@string/weight_hint"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/etWeight"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_below="@+id/t2"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="16dp"
-                            android:background="@drawable/rect">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:background="@null"
-                                android:fontFamily="@font/gothic"
-                                android:inputType="numberSigned"
-                                android:maxLength="3"
-                                android:paddingBottom="10dp"
-                                android:textAlignment="center" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/t3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/lin1"
-
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/gothic"
-                    android:gravity="center"
-                    android:text="@string/workout_hint"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/etWorkTime"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_below="@+id/t3"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/rect">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@null"
-                        android:fontFamily="@font/gothic"
-                        android:inputType="numberSigned"
-                        android:maxLength="3"
-                        android:paddingBottom="10dp"
-                        android:textAlignment="center" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/lin2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/etWorkTime"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:id="@+id/t4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="16dp"
-                            android:fontFamily="@font/gothic"
-                            android:gravity="center"
-
-                            android:text="@string/wakeup_hint"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/etWakeUpTime"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_below="@+id/t4"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="16dp"
-                            android:background="@drawable/rect">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:background="@null"
-                                android:clickable="true"
-                                android:focusable="false"
-                                android:fontFamily="@font/gothic"
-                                android:inputType="numberSigned"
-                                android:textAlignment="center" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-
-                        <TextView
-                            android:id="@+id/t5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="16dp"
-                            android:fontFamily="@font/gothic"
-                            android:gravity="center"
-                            android:text="@string/sleeping_hint"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/etSleepTime"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_below="@+id/t5"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginBottom="8dp"
-                            android:background="@drawable/rect">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:background="@null"
-                                android:clickable="true"
-                                android:focusable="false"
-                                android:fontFamily="@font/gothic"
-                                android:inputType="numberSigned"
-                                android:paddingStart="10dp"
-                                android:paddingBottom="10dp"
-                                android:textAlignment="center" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </RelativeLayout>
-                </LinearLayout>
-            </RelativeLayout>
-
-        </ScrollView>
-
-        <RelativeLayout
-            android:id="@+id/bottom_rel"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etWeight"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/adView">
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rect"
+            android:hint="@string/weight_hint"
+            app:layout_constraintTop_toBottomOf="@id/etName"
+            app:layout_constraintBottom_toTopOf="@+id/etWorkTime"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
-            <Button
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:fontFamily="@font/gothic"
+                android:inputType="numberSigned"
+                android:maxLength="3"
+                android:textAlignment="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-                android:id="@+id/btnContinue"
-                android:layout_width="100dp"
-                android:layout_height="35dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="13dp"
-                android:background="@drawable/a4_grad"
-                android:fontFamily="@font/baloo"
-                android:text="@string/str_continue"
-                android:textSize="14dp"
-                android:typeface="serif" />
-        </RelativeLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etWorkTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rect"
+            android:hint="@string/workout_hint"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/etWeight"
+            app:layout_constraintBottom_toTopOf="@+id/etWakeUpTime"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:fontFamily="@font/gothic"
+                android:inputType="numberSigned"
+                android:maxLength="3"
+                android:textAlignment="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etWakeUpTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rect"
+            android:hint="@string/wakeup_hint"
+            app:layout_constraintEnd_toStartOf="@+id/etSleepTime"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etWorkTime">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/gothic"
+                android:inputType="numberSigned"
+                android:textAlignment="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etSleepTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rect"
+            android:hint="@string/sleeping_hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/etWakeUpTime"
+            app:layout_constraintTop_toBottomOf="@+id/etWorkTime">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:fontFamily="@font/gothic"
+                android:inputType="numberSigned"
+                android:textAlignment="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/a4_grad"
+            android:fontFamily="@font/baloo"
+            android:text="@string/str_continue"
+            android:textSize="14sp"
+            android:typeface="serif"
+            app:layout_constraintBottom_toTopOf="@+id/adView"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_gravity="center"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/google_baner" />
+            app:adSize="BANNER"
+            app:adUnitId="@string/google_baner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
