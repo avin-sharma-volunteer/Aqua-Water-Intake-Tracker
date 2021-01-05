@@ -67,10 +67,10 @@ class Notification(val ctx: Context) {
             .setLargeIcon(
                 BitmapFactory.decodeResource(
                     ctx.resources,
-                    R.mipmap.water_glass
+                    R.mipmap.ic_launcher
                 )
             )
-            .setSmallIcon(R.drawable.notification_icon)
+            .setSmallIcon(R.drawable.ic_launcher)
             .setAutoCancel(true)
             .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
 

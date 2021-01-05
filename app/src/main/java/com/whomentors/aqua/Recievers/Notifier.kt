@@ -39,11 +39,11 @@ class Notifier : BroadcastReceiver() {
         val nHelper =
             com.whomentors.aqua.Helpers.Notification(context)
         val decodeResource =
-            BitmapFactory.decodeResource(context.resources, R.mipmap.noti_banner)
+            BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher)
         @SuppressLint("ResourceType") val nBuilder = messageToShow?.let {
             nHelper
                 .getNotification(title, it, notificationsTone)
-                ?.setSmallIcon(R.drawable.notification_icon)
+                ?.setSmallIcon(R.mipmap.ic_launcher)
                 ?.setStyle(NotificationCompat.BigPictureStyle().bigPicture(decodeResource))
         }
 
