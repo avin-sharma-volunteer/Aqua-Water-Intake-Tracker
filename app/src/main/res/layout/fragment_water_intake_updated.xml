@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorSecondaryLighter">
+
+    <View
+        android:id="@+id/bottle_background_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@mipmap/water_bottel11"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintWidth_percent=".6"
+        app:layout_constraintHeight_percent=".6"
+        app:layout_constraintVertical_bias="0"
+        android:translationZ="2dp"/>
+
+    <View
+        android:id="@+id/bottle_progress_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintTop_toTopOf="@id/bottle_background_view"
+        app:layout_constraintBottom_toBottomOf="@id/bottle_background_view"
+        app:layout_constraintLeft_toLeftOf="@id/bottle_background_view"
+        app:layout_constraintRight_toRightOf="@id/bottle_background_view"
+        app:layout_constraintHeight_percent=".5"
+        app:layout_constraintWidth_percent=".5"
+        app:layout_constraintVertical_bias=".86"
+        />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/bottle_background_view"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
