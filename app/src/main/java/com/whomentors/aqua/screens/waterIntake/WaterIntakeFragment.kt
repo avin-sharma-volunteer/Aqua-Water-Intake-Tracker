@@ -8,6 +8,7 @@ import android.util.TypedValue
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AlertDialog
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.daimajia.androidanimations.library.Techniques
@@ -24,6 +25,8 @@ import com.whomentors.aqua.Helpers.Sqlite
 import com.whomentors.aqua.MainActivity
 import com.whomentors.aqua.R
 import com.whomentors.aqua.databinding.FragmentWaterIntakeBinding
+import com.whomentors.aqua.databinding.FragmentWaterIntakeUpdatedBinding
+import kotlinx.android.synthetic.main.fragment_water_intake_updated.*
 
 
 /**
@@ -42,14 +45,14 @@ class WaterIntakeFragment : Fragment() {
     private var selectedOption: Int? = null
     private var snackbar: Snackbar? = null
 
-    private lateinit var binding: FragmentWaterIntakeBinding
+    private lateinit var binding: FragmentWaterIntakeUpdatedBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentWaterIntakeBinding>(inflater, R.layout.fragment_water_intake, container, false)
+        binding = DataBindingUtil.inflate<FragmentWaterIntakeUpdatedBinding>(inflater, R.layout.fragment_water_intake_updated, container, false)
 
         val context = binding.root.context
 
@@ -197,7 +200,7 @@ class WaterIntakeFragment : Fragment() {
 
         // Add the selected amount to total intake
         // when + fab is pressed
-        binding.fabAdd.setOnClickListener {
+        binding.addWaterFab.setOnClickListener {
 
 
             if (selectedOption != null) {
@@ -346,14 +349,23 @@ class WaterIntakeFragment : Fragment() {
 
         YoYo.with(Techniques.SlideInDown)
             .duration(500)
-            .playOn(binding.tvIntook)
-        binding.tvIntook.text = "$inTook"
+            .playOn(binding.tvIntake)
+        binding.tvIntake.text = "$inTook"
         binding.tvTotalIntake.text = "$totalIntake ml"
-        val progress = ((inTook / totalIntake.toFloat()) * 100).toInt()
-        YoYo.with(Techniques.Pulse)
-            .duration(500)
-            .playOn(binding.intakeProgress)
-        binding.intakeProgress.currentProgress = progress
+//        val progress = ((inTook / totalIntake.toFloat()) * 100).toInt()
+//        YoYo.with(Techniques.Pulse)
+//            .duration(500)
+//            .playOn(binding.intakeProgress)
+//        binding.intakeProgress.currentProgress = progress
+
+        val progress = inTook.toFloat()/totalIntake.toFloat()
+        Log.d("WaterIntakeFragment", (0.5f * progress).toString())
+        val set = ConstraintSet()
+        set.clone(parent_constraint_layout)
+        set.constrainPercentHeight(R.id.bottle_progress_view, 0.5f * progress)
+        set.setVerticalBias(bottle_progress_view.id, .93f)
+        set.applyTo(parent_constraint_layout)
+
         if ((inTook * 100 / totalIntake) > 140) {
             Snackbar.make(binding.root, "You achieved the goal", Snackbar.LENGTH_SHORT)
                 .show()
