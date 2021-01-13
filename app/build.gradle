@@ -66,7 +66,7 @@ dependencies {
     implementation 'com.daimajia.androidanimations:library:2.3@aar'
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:2.1.2'
     implementation 'rongi.rotate-layout:rotate-layout:3.0.0'
-    implementation 'com.google.android.gms:play-services-ads:19.3.0'
+    implementation 'com.google.android.gms:play-services-ads:19.6.0'
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
