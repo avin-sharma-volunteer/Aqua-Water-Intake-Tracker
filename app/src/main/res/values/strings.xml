@@ -2,12 +2,12 @@
     <string name="app_name">Aqua: Water Intake Tracker</string>
 
 
-    <string name="admob_app_id">ca-app-pub-2236399715405637~7894937741</string>
+    <string name="admob_app_id">ca-app-pub-4972437166575684~4926117331</string>
 
-<!--    <string name="google_baner">ca-app-pub-3940256099942544/6300978111</string> testing purpose   -->
-    <string name="google_baner">ca-app-pub-2236399715405637~7894937741</string>
-    <string name="g_inr">ca-app-pub-2236399715405637/9699630547</string>
-    <string name="g_native">ca-app-pub-2236399715405637/9508058858</string>
+<!--    <string name="google_baner">ca-app-pub-3940256099942544/6300978111</string> test purpose-->
+    <string name="google_baner">ca-app-pub-4972437166575684/3613035663</string>
+    <string name="g_inr">ca-app-pub-4972437166575684/2299953996</string>
+    <string name="g_native">ca-app-pub-4972437166575684/6505958167</string>
 
 
     <string name="pref_notification_message_value">Hey… Lets drink some water…</string>
