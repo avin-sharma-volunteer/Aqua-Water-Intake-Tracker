@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorSecondaryLighter">
+
+        <View
+            android:id="@+id/bottle_background_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:background="@mipmap/water_bottel11"
+            android:translationZ="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent=".5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent=".5" />
+
+        <View
+            android:id="@+id/bottle_progress_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@id/bottle_background_view"
+            app:layout_constraintLeft_toLeftOf="@id/bottle_background_view"
+            app:layout_constraintRight_toRightOf="@id/bottle_background_view"
+            app:layout_constraintTop_toTopOf="@id/bottle_background_view"
+            app:layout_constraintHeight_percent=".4"
+            app:layout_constraintVertical_bias=".8"
+            app:layout_constraintWidth_percent=".42" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_water_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_plus_solid"
+            app:layout_constraintBottom_toTopOf="@id/cardviewone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bottle_background_view" />
+
+        <TextView
+            android:id="@+id/tvIntake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gothic"
+            android:text="1000"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/add_water_fab"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/of"
+            app:layout_constraintTop_toTopOf="@id/add_water_fab" />
+
+        <TextView
+            android:id="@+id/of"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="16dp"
+            android:text="of"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvIntake"
+            app:layout_constraintLeft_toRightOf="@id/tvIntake"
+            app:layout_constraintRight_toLeftOf="@id/tvTotalIntake"
+            app:layout_constraintTop_toTopOf="@id/tvIntake" />
+
+        <TextView
+            android:id="@+id/tvTotalIntake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/gothic"
+            android:text="1000 ml"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvIntake"
+            app:layout_constraintLeft_toRightOf="@id/of"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvIntake" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardviewone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="horizontal"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="20dip"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_water_fab"
+            app:layout_constraintBottom_toTopOf="@id/adView">
+
+            <HorizontalScrollView
+                android:id="@+id/h_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:id="@+id/carddd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="6">
+
+                    <RelativeLayout
+                        android:id="@+id/op50ml"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/i1"
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/a2_grad"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_water_glass" />
+
+                        <TextView
+                            android:id="@+id/t1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/i1"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="50 ml"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/t1"
+                            android:fontFamily="@font/gothic"
+                            android:text="Water"
+                            android:textAlignment="center" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/op100ml"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/i2"
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/a2_grad"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_tea" />
+
+                        <TextView
+                            android:id="@+id/t2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/i2"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="100 ml"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/t2"
+                            android:fontFamily="@font/gothic"
+                            android:text="Tea"
+                            android:textAlignment="center" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/op150ml"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/i3"
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/a2_grad"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_coffee_cup" />
+
+                        <TextView
+                            android:id="@+id/t3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/i3"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="150 ml"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/t3"
+                            android:fontFamily="@font/gothic"
+                            android:text="Cofee"
+                            android:textAlignment="center" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/op200ml"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/i4"
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/a2_grad"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_cola" />
+
+                        <TextView
+                            android:id="@+id/t4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/i4"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="200 ml"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/t4"
+                            android:fontFamily="@font/gothic"
+                            android:text="Soft Drink"
+                            android:textAlignment="center" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/op250ml"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/i5"
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/a2_grad"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_juice" />
+
+                        <TextView
+                            android:id="@+id/t5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/i5"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/baloo"
+                            android:text="250 ml"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/t5"
+                            android:fontFamily="@font/gothic"
+                            android:text="Juice"
+                            android:textAlignment="center" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/opCustom"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/i6"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/a3_grad"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_plus_solid" />
+
+                        <TextView
+                            android:id="@+id/t6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/i6"
+                            android:fontFamily="@font/baloo"
+                            android:gravity="center"
+                            android:text="Custom"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBlack" />
+
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            app:adSize="BANNER"
+            app:adUnitId="@string/google_baner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
