@@ -109,7 +109,7 @@ class WaterIntakeFragment : Fragment() {
             findNavController().navigate(R.id.action_waterIntakeFragment_to_userInfoFragment)
         }
 
-        dateNow = Thisapp.getCurrentDate()!!
+        dateNow = Thisapp.getCurrentDate()
 
         setHasOptionsMenu(true)
         return binding.root
