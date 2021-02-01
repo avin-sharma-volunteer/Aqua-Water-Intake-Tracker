@@ -23,5 +23,5 @@ interface StatsDatabaseDao {
 
     // Get all the intakes
     @Query("SELECT * from daily_water_intake_table")
-    suspend fun getAllIntakes(): LiveData<List<DailyIntake>>
+    fun getAllIntakes(): LiveData<List<DailyIntake>>
 }

@@ -2,6 +2,7 @@ package com.whomentors.aqua.screens.waterIntake
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.whomentors.aqua.AppUtils.Thisapp
@@ -33,10 +34,17 @@ class MainViewModel(
     }
 
     /**
+     * Get observable today's entry
+     */
+    fun getTodayEntry(): LiveData<DailyIntake>{
+        return todayEntry
+    }
+
+    /**
      * Adds today's intake entry if it does not
      * already exists.
      */
-    fun insertTodayIntake(intake: Int, totalIntake: Int){
+    fun insertTodayIntake(totalIntake: Int){
         viewModelScope.launch {
             todayEntry.value = getTodayFromDatabase()
 
@@ -44,9 +52,10 @@ class MainViewModel(
             if (todayEntry.value == null){
                 val todayIntake = DailyIntake(
                     date = Thisapp.getCurrentDate(),
-                    intake = intake,
+                    intake = 0,
                     totalIntake = totalIntake)
                 insert(todayIntake)
+                todayEntry.value = todayIntake
             }
         }
     }
@@ -59,14 +68,19 @@ class MainViewModel(
             val entry = todayEntry.value!!
             entry.intake += intake
             update(entry)
+            todayEntry.value = entry
         }
     }
 
+    /**
+     * Update total intake
+     */
     fun updateTotalIntake(totalIntake: Int){
         viewModelScope.launch {
             val entry = todayEntry.value!!
             entry.totalIntake = totalIntake
             update(entry)
+            todayEntry.value = entry
         }
     }
 
