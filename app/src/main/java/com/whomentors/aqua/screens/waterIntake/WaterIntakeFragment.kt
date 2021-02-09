@@ -116,6 +116,9 @@ class WaterIntakeFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Initialize Main ViewModel
+     */
     private fun initializeViewModel() {
         val application = requireNotNull(this.activity).application
         val statsDao = StatsDatabase.getInstance(application).statsDatabaseDao
@@ -172,13 +175,6 @@ class WaterIntakeFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-//    fun updateValues() {
-//        totalIntake = sharedPref.getInt(Thisapp.TOTAL_INTAKE, 0)
-//        // TODO: Use ViewModel here
-//        inTake = sqliteHelper.getIntook(dateNow)
-//
-//        setWaterLevel(inTake, totalIntake)
-//    }
 
     override fun onStart() {
         super.onStart()
@@ -203,10 +199,6 @@ class WaterIntakeFragment : Fragment() {
         }
 
 
-        // TODO: Use ViewModel here
-//        sqliteHelper.addAll(dateNow, 0, totalIntake)
-//
-//        updateValues()
 
         // Add the selected amount to total intake
         // when + fab is pressed
