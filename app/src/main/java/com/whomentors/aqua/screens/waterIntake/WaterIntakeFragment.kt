@@ -28,6 +28,7 @@ import com.whomentors.aqua.R
 import com.whomentors.aqua.database.StatsDatabase
 import com.whomentors.aqua.databinding.FragmentWaterIntakeUpdatedBinding
 import kotlinx.android.synthetic.main.fragment_water_intake_updated.*
+import kotlin.math.min
 
 
 /**
@@ -205,7 +206,7 @@ class WaterIntakeFragment : Fragment() {
         binding.addWaterFab.setOnClickListener {
             if (selectedOption != null) {
                 val  per = inTake * 100 / totalIntake
-                if ((inTake * 100 / totalIntake) <= 100) {
+                if (((inTake + selectedOption!!) * 100 / totalIntake) <= 100) {
                     Log.d("Intake", per.toString())
                     mainViewModel.updateTodayIntake(selectedOption!!)
                     Snackbar.make(it, "Your water intake was saved...!!", Snackbar.LENGTH_SHORT)
@@ -351,11 +352,11 @@ class WaterIntakeFragment : Fragment() {
 
 
         val progress = inTake.toFloat()/totalIntake.toFloat()
-        Log.d("WaterIntakeFragment", (0.5f * progress).toString())
+        Log.d("WaterIntakeFragment", (0.9f * progress).toString())
         val set = ConstraintSet()
         set.clone(parent_constraint_layout)
-        set.constrainPercentHeight(R.id.bottle_progress_view, 0.5f * progress)
-        set.setVerticalBias(bottle_progress_view.id, .93f)
+        set.constrainPercentHeight(R.id.bottle_progress_view, min(0.48f * progress, 0.48f))
+        set.setVerticalBias(bottle_progress_view.id, .9f)
         set.applyTo(parent_constraint_layout)
 
         if ((inTake * 100 / totalIntake) > 140) {
