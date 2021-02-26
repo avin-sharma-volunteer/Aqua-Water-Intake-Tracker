@@ -150,8 +150,7 @@ class UserInfoFragment : Fragment() {
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = sleepingTime
 
-            val mTimePicker: TimePickerDialog
-            mTimePicker = TimePickerDialog(
+            val mTimePicker = TimePickerDialog(
                 context,
                 TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
 

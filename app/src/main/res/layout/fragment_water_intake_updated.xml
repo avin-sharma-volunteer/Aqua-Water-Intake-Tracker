@@ -9,18 +9,30 @@
         android:background="@color/colorSecondaryLighter">
 
         <View
-            android:id="@+id/bottle_background_view"
+            android:id="@+id/bottle_cap_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/ic_cap"
             android:layout_marginTop="16dp"
-            android:background="@mipmap/water_bottel11"
-            android:translationZ="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHeight_percent=".5"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toTopOf="@+id/bottle_background_view"
+            app:layout_constraintWidth_percent=".3"
+            app:layout_constraintHeight_percent=".1"
+            />
+
+
+        <View
+            android:id="@+id/bottle_background_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/ic_bottle"
+            android:translationZ="2dp"
+            app:layout_constraintHeight_percent=".5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bottle_cap_view"
             app:layout_constraintWidth_percent=".5" />
 
         <View
@@ -32,17 +44,17 @@
             app:layout_constraintLeft_toLeftOf="@id/bottle_background_view"
             app:layout_constraintRight_toRightOf="@id/bottle_background_view"
             app:layout_constraintTop_toTopOf="@id/bottle_background_view"
-            app:layout_constraintHeight_percent=".4"
-            app:layout_constraintVertical_bias=".8"
-            app:layout_constraintWidth_percent=".42" />
+            app:layout_constraintHeight_percent="0.48"
+            app:layout_constraintVertical_bias=".9"
+            app:layout_constraintWidth_percent=".45" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_water_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
             android:backgroundTint="@color/colorPrimary"
             android:src="@drawable/ic_plus_solid"
+            android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toTopOf="@id/cardviewone"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bottle_background_view" />

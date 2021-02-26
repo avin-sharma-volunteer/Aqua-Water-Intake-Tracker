@@ -11,13 +11,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.whomentors.aqua.AppUtils.Thisapp
 import com.whomentors.aqua.Helpers.Alarm
 import com.whomentors.aqua.Helpers.Sqlite
 import com.whomentors.aqua.R
+import com.whomentors.aqua.database.StatsDatabase
 import com.whomentors.aqua.databinding.FragmentUpdateUserInfoBinding
+import com.whomentors.aqua.screens.waterIntake.MainViewModel
+import com.whomentors.aqua.screens.waterIntake.MainViewModelFactory
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.util.*
@@ -40,6 +44,7 @@ class UpdateUserInfoFragment : Fragment() {
 
     // DataBinding object
     private lateinit var binding: FragmentUpdateUserInfoBinding
+    private lateinit var userInfoViewModel: UserInfoViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +53,8 @@ class UpdateUserInfoFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_update_user_info, container, false)
         val context = binding.root.context
+
+        initializeViewModel()
 
         val etWakeUpTime: TextInputLayout = binding.etWakeUpTime
         val etSleepTime: TextInputLayout = binding.etSleepTime
@@ -98,8 +105,7 @@ class UpdateUserInfoFragment : Fragment() {
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = wakeupTime
 
-            val mTimePicker: TimePickerDialog
-            mTimePicker = TimePickerDialog(
+            val mTimePicker = TimePickerDialog(
                 context,
                 TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
 
@@ -126,8 +132,7 @@ class UpdateUserInfoFragment : Fragment() {
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = sleepingTime
 
-            val mTimePicker: TimePickerDialog
-            mTimePicker = TimePickerDialog(
+            val mTimePicker = TimePickerDialog(
                 context,
                 TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
 
@@ -201,19 +206,11 @@ class UpdateUserInfoFragment : Fragment() {
                     editor.putLong(Thisapp.SLEEPING_TIME_KEY, sleepingTime)
                     editor.putString(Thisapp.NOTIFICATION_MSG_KEY, notificMsg)
 
-
-                    val sqliteHelper =
-                        Sqlite(context)
-
                     // If the new target is not equal to previous target
                     // save the new target in the database
                     if (currentTarget != customTarget.toInt()) {
                         editor.putInt(Thisapp.TOTAL_INTAKE, customTarget.toInt())
-
-                        sqliteHelper.updateTotalIntake(
-                            Thisapp.getCurrentDate()!!,
-                            customTarget.toInt()
-                        )
+                        userInfoViewModel.updateTotalIntake(customTarget.toInt())
                     } else {
                         // If the new target is equal to previous target
                         // calculate intake based on weight and workout time
@@ -226,11 +223,7 @@ class UpdateUserInfoFragment : Fragment() {
                         val df = DecimalFormat("#")
                         df.roundingMode = RoundingMode.CEILING
                         editor.putInt(Thisapp.TOTAL_INTAKE, df.format(totalIntake).toInt())
-
-                        sqliteHelper.updateTotalIntake(
-                            Thisapp.getCurrentDate()!!,
-                            df.format(totalIntake).toInt()
-                        )
+                        userInfoViewModel.updateTotalIntake(df.format(totalIntake).toInt())
                     }
 
                     editor.apply()
@@ -251,5 +244,16 @@ class UpdateUserInfoFragment : Fragment() {
             }
         }
         return binding.root
+    }
+
+    /**
+     * Initialize Main ViewModel
+     */
+    private fun initializeViewModel() {
+        val application = requireNotNull(this.activity).application
+        val statsDao = StatsDatabase.getInstance(application).statsDatabaseDao
+
+        val viewModelFactory = UserInfoViewModelFactory(statsDao, application)
+        userInfoViewModel = ViewModelProvider(this, viewModelFactory).get(UserInfoViewModel::class.java)
     }
 }

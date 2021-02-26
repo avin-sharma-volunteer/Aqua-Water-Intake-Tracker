@@ -12,7 +12,7 @@ class Thisapp {
 
         }
 
-        fun getCurrentDate(): String? {
+        fun getCurrentDate(): String {
             val c = Calendar.getInstance().time
             val df = SimpleDateFormat("dd-MM-yyyy")
             return df.format(c)
