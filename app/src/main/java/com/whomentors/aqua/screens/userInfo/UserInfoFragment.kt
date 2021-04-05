@@ -31,9 +31,8 @@ import java.util.*
 
 
 /**
- * A simple [Fragment] subclass.
- * Use the [UserInfoFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * A simple [Fragment] that displays users info
+ * when the app is launched for the first time.
  */
 class UserInfoFragment : Fragment() {
 

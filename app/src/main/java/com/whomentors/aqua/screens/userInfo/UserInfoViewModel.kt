@@ -9,6 +9,9 @@ import com.whomentors.aqua.database.DailyIntake
 import com.whomentors.aqua.database.StatsDatabaseDao
 import kotlinx.coroutines.launch
 
+/**
+ * A view model to save info about users.
+ */
 class UserInfoViewModel(
     val database: StatsDatabaseDao,
     application: Application

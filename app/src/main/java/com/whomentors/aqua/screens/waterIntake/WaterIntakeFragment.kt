@@ -356,7 +356,7 @@ class WaterIntakeFragment : Fragment() {
         val set = ConstraintSet()
         set.clone(parent_constraint_layout)
         set.constrainPercentHeight(R.id.bottle_progress_view, min(0.48f * progress, 0.48f))
-        set.setVerticalBias(bottle_progress_view.id, .9f)
+        set.setVerticalBias(bottle_progress_view.id, 1f)
         set.applyTo(parent_constraint_layout)
 
         if ((inTake * 100 / totalIntake) > 140) {

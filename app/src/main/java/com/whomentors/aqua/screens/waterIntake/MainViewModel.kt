@@ -10,6 +10,10 @@ import com.whomentors.aqua.database.DailyIntake
 import com.whomentors.aqua.database.StatsDatabaseDao
 import kotlinx.coroutines.launch
 
+/**
+ * A view model that stores and handles operations
+ * related to daily water intake.
+ */
 class MainViewModel(
     val database: StatsDatabaseDao,
     application: Application): AndroidViewModel(application) {

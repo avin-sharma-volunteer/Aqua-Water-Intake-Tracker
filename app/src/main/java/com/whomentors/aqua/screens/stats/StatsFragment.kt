@@ -40,9 +40,7 @@ import kotlin.math.max
 
 
 /**
- * A simple [Fragment] subclass.
- * Use the [StatsFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * A simple [Fragment] that displays stats screen.
  */
 class StatsFragment : Fragment() {
     private lateinit var sharedPref: SharedPreferences
@@ -135,51 +133,6 @@ class StatsFragment : Fragment() {
         })
 
         val cursor: Cursor = sqliteHelper.getAllStats()
-
-//        // get all the stats and add data to Entry object
-//        if (cursor.moveToFirst()) {
-//
-//            for (i in 0 until cursor.count) {
-//                dateArray.add(cursor.getString(1))
-//                val percent = cursor.getInt(2) / cursor.getInt(3).toFloat() * 100
-//                totalPercentage += percent
-//                totalGlasses += cursor.getInt(2)
-//                entries.add(Entry(i.toFloat(), percent))
-//                cursor.moveToNext()
-//            }
-//
-//        } else {
-//            Toast.makeText(context, "Empty", Toast.LENGTH_LONG).show()
-//        }
-
-//        // If entries are not empty then create chart
-//        if (!entries.isEmpty()) {
-//
-//            createChart(chart, entries, context, dateArray)
-//
-//            val remaining = sharedPref.getInt(
-//                Thisapp.TOTAL_INTAKE,
-//                0
-//            ) - sqliteHelper.getIntook(Thisapp.getCurrentDate()!!)
-//
-//            if (remaining > 0) {
-//                remainingIntake.text = "$remaining ml"
-//            } else {
-//                remainingIntake.text = "0 ml"
-//            }
-
-
-
-//            targetIntake.text = "${sharedPref.getInt(Thisapp.TOTAL_INTAKE, 0)} ml"
-//
-//            val percentage = sqliteHelper.getIntook(Thisapp.getCurrentDate()!!) * 100 / sharedPref.getInt(
-//                Thisapp.TOTAL_INTAKE,
-//                0
-//            )
-//            waterLevelView.centerTitle = "$percentage%"
-//            waterLevelView.progressValue = percentage
-//
-//        }
 
         return binding.root
     }

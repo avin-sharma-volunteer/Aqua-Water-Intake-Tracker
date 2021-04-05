@@ -27,9 +27,8 @@ import java.text.DecimalFormat
 import java.util.*
 
 /**
- * A simple [Fragment] subclass.
- * Use the [UpdateUserInfoFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * A simple [Fragment] that displays editable
+ * info that the users can change and save.
  */
 class UpdateUserInfoFragment : Fragment() {
 

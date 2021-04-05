@@ -9,6 +9,10 @@ import com.whomentors.aqua.database.DailyIntake
 import com.whomentors.aqua.database.StatsDatabaseDao
 import kotlinx.coroutines.launch
 
+/**
+ * ViewModel that stores daily water intake
+ * entries
+ */
 class StatsViewModel(
     val database: StatsDatabaseDao,
     application: Application
@@ -25,7 +29,7 @@ class StatsViewModel(
         }
     }
 
-    fun getAllEntries(): LiveData<List<DailyIntake>>{
+    fun getAllEntries(): LiveData<List<DailyIntake>> {
         return allEntries
     }
 }
