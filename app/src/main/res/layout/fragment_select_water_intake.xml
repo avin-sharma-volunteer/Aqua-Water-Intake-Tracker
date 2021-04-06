@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.selectIntake.SelectWaterIntakeFragment">
+
+        <TextView
+            android:id="@+id/goal_reached_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reached Today's Water Goal!"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_margin="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:visibility="gone"/>
+
+        <app.futured.donut.DonutProgressView
+            android:id="@+id/circular_progress_bar"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:layout_margin="16dp"
+            app:donut_bgLineColor="@color/colorSecondaryLighter"
+            app:donut_gapWidth="20"
+            app:donut_gapAngle="270"
+            app:donut_strokeWidth="16dp"
+            app:layout_constraintTop_toBottomOf="@id/goal_reached_text_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/intake_percent_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="80%"
+            app:layout_constraintTop_toTopOf="@id/circular_progress_bar"
+            app:layout_constraintBottom_toBottomOf="@id/circular_progress_bar"
+            app:layout_constraintLeft_toLeftOf="@id/circular_progress_bar"
+            app:layout_constraintRight_toRightOf="@id/circular_progress_bar"/>
+
+
+        <Button
+            android:id="@+id/quantity_one_button"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:text="100ml"
+            android:layout_margin="16dp"
+            android:background="@color/superLightTeal"
+            app:layout_constraintTop_toBottomOf="@id/circular_progress_bar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/quantity_two_button" />
+        <Button
+            android:id="@+id/quantity_two_button"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:text="200ml"
+            android:layout_margin="16dp"
+            android:background="@color/littleLightTeal"
+            app:layout_constraintTop_toBottomOf="@id/circular_progress_bar"
+            app:layout_constraintLeft_toRightOf="@id/quantity_one_button"
+            app:layout_constraintRight_toRightOf="parent"/>
+        <Button
+            android:id="@+id/quantity_three_button"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:text="300ml"
+            android:layout_margin="16dp"
+            android:background="@color/lightTeal"
+            app:layout_constraintTop_toBottomOf="@id/quantity_one_button"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/quantity_four_button"/>
+        <Button
+            android:id="@+id/quantity_four_button"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:text="500ml"
+            android:layout_margin="16dp"
+            app:layout_constraintTop_toBottomOf="@id/quantity_two_button"
+            app:layout_constraintLeft_toRightOf="@id/quantity_three_button"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -28,6 +28,9 @@
             app:destination="@id/userInfoFragment"
             app:popUpTo="@id/waterIntakeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_waterIntakeFragment_to_selectWaterIntakeFragment"
+            app:destination="@id/selectWaterIntakeFragment" />
     </fragment>
 
     <fragment
@@ -46,4 +49,13 @@
         android:name="com.whomentors.aqua.screens.stats.StatsFragment"
         android:label="Water Intake Report"
         tools:layout="@layout/fragment_stats" />
+    <fragment
+        android:id="@+id/selectWaterIntakeFragment"
+        android:name="com.whomentors.aqua.screens.selectIntake.SelectWaterIntakeFragment"
+        android:label="SelectWaterIntakeFragment"
+        tools:layout="@layout/fragment_select_water_intake">
+        <action
+            android:id="@+id/action_selectWaterIntakeFragment_to_waterIntakeFragment"
+            app:destination="@id/waterIntakeFragment" />
+    </fragment>
 </navigation>

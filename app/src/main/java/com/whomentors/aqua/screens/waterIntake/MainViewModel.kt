@@ -67,12 +67,14 @@ class MainViewModel(
     /**
      * Adds provided intake value to today's intake.
      */
-    fun updateTodayIntake(intake: Int){
+    fun addToTodayIntake(intake: Int){
         viewModelScope.launch {
             val entry = todayEntry.value!!
-            entry.intake += intake
-            update(entry)
-            todayEntry.value = entry
+            if (entry.intake < entry.totalIntake){
+                entry.intake += intake
+                update(entry)
+                todayEntry.value = entry
+            }
         }
     }
 

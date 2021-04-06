@@ -106,7 +106,7 @@ class UpdateUserInfoFragment : Fragment() {
 
             val mTimePicker = TimePickerDialog(
                 context,
-                TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
+                { _, selectedHour, selectedMinute ->
 
                     val time = Calendar.getInstance()
                     time.set(Calendar.HOUR_OF_DAY, selectedHour)
@@ -133,7 +133,7 @@ class UpdateUserInfoFragment : Fragment() {
 
             val mTimePicker = TimePickerDialog(
                 context,
-                TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
+                { _, selectedHour, selectedMinute ->
 
                     val time = Calendar.getInstance()
                     time.set(Calendar.HOUR_OF_DAY, selectedHour)

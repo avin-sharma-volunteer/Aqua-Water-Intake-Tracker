@@ -16,4 +16,9 @@
     <color name="black">#000000</color>
     <color name="grey">#DCDCDC</color>
 
+    <color name="superLightTeal">#00cdcd</color>
+    <color name="littleLightTeal">#00b3b3</color>
+    <color name="lightTeal">#009a9a</color>
+
+
 </resources>

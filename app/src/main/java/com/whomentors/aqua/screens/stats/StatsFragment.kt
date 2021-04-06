@@ -132,8 +132,6 @@ class StatsFragment : Fragment() {
             waterLevelView.progressValue = percentage
         })
 
-        val cursor: Cursor = sqliteHelper.getAllStats()
-
         return binding.root
     }
 
