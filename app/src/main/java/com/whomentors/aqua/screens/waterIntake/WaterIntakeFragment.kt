@@ -52,9 +52,9 @@ class WaterIntakeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentWaterIntakeUpdatedBinding>(inflater, R.layout.fragment_water_intake_updated, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_water_intake_updated, container, false)
         val context = binding.root.context
 
         initializeViewModel()

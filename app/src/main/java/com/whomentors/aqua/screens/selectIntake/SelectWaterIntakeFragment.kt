@@ -79,7 +79,7 @@ class SelectWaterIntakeFragment : Fragment() {
 
         val waterAmount = DonutSection(
             name = "water_intake",
-            color = Color.parseColor("#FB1D32"),
+            color = Color.parseColor("#00796B"),
             amount = percent.toFloat()
         )
         binding.circularProgressBar.submitData(listOf(waterAmount))

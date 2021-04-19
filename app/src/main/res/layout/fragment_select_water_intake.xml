@@ -50,7 +50,7 @@
             android:layout_height="80dp"
             android:text="100ml"
             android:layout_margin="16dp"
-            android:background="@color/superLightTeal"
+            android:backgroundTint="@color/superLightTeal"
             app:layout_constraintTop_toBottomOf="@id/circular_progress_bar"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/quantity_two_button" />
@@ -60,7 +60,7 @@
             android:layout_height="80dp"
             android:text="200ml"
             android:layout_margin="16dp"
-            android:background="@color/littleLightTeal"
+            android:backgroundTint="@color/littleLightTeal"
             app:layout_constraintTop_toBottomOf="@id/circular_progress_bar"
             app:layout_constraintLeft_toRightOf="@id/quantity_one_button"
             app:layout_constraintRight_toRightOf="parent"/>
@@ -70,7 +70,7 @@
             android:layout_height="80dp"
             android:text="300ml"
             android:layout_margin="16dp"
-            android:background="@color/lightTeal"
+            android:backgroundTint="@color/lightTeal"
             app:layout_constraintTop_toBottomOf="@id/quantity_one_button"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/quantity_four_button"/>

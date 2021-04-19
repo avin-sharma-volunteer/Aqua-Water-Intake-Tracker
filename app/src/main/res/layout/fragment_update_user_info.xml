@@ -132,7 +132,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etTarget"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/rect"
@@ -143,7 +143,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:background="@null"
                 android:fontFamily="@font/gothic"
                 android:hint="@string/custom_intake_hint"
@@ -173,7 +173,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etNotificationText"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/totalIntakePercentage"
             android:background="@drawable/rect"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -182,7 +182,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:background="@null"
                 android:fontFamily="@font/gothic"
                 android:hint="@string/notif_messsage_hint"
